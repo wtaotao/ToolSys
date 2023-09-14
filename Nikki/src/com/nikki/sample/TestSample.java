@@ -7,7 +7,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Test {
+import com.nikki.out.Print;
+import com.nikki.sort.BubbleSort;
+import com.nikki.thread.WorkerThread;
+
+public class TestSample {
     private static final String MD5_SALT = "QAZWSXEDCRFV09876543210";
     private static Map AttrValueMap = new HashMap<>(16);
 	public static void main(String[] args) {
@@ -17,8 +21,8 @@ public class Test {
 //		(new Test()).testBubbleSort();
 //		(new Test()).checkpwd("123456");
 //		(new Test()).testHashMap1();
-		(new Test()).testThread1();
-		(new Test()).testThread2();
+		(new TestSample()).testThread1();
+		(new TestSample()).testThread2();
 	}
 	
 	private void testThread1() {

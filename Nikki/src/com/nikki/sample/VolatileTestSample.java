@@ -1,6 +1,6 @@
 package com.nikki.sample;
 
-public class VolatileTest {
+public class VolatileTestSample {
 
 
     public volatile int inc = 0;
@@ -10,7 +10,7 @@ public class VolatileTest {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final VolatileTest test = new VolatileTest();
+        final VolatileTestSample test = new VolatileTestSample();
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 1000; j++)

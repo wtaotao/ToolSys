@@ -1,4 +1,4 @@
-package com.nikki.sample;
+package com.nikki.out;
 
 public class Print {
 

@@ -1,4 +1,4 @@
-package com.nikki.sample;
+package com.nikki.queue;
 
 import java.util.AbstractQueue;
 import java.util.Collection;

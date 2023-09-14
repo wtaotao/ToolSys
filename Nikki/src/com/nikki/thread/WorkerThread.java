@@ -1,4 +1,6 @@
-package com.nikki.sample;
+package com.nikki.thread;
+
+import com.nikki.out.Print;
 
 public class WorkerThread extends Thread {
 	private static int index = 0;

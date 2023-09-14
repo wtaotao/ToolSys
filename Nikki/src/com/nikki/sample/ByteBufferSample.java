@@ -2,7 +2,7 @@ package com.nikki.sample;
 
 import java.nio.ByteBuffer;
 
-public class ByteBufferApp {
+public class ByteBufferSample {
 	  public void testBuffer() {
 		    // 初始化一个大小为6的ByteBuffer
 		    ByteBuffer buffer = ByteBuffer.allocate(6);
@@ -28,7 +28,7 @@ public class ByteBufferApp {
 		      buffer.position(), buffer.limit(), buffer.capacity());
 		  }
 	public static void main(String[] args) {
-		(new ByteBufferApp()).testBuffer();
+		(new ByteBufferSample()).testBuffer();
 	}
 
 }

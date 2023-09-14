@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.nikki.out.Print;
+
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -40,7 +42,7 @@ import jxl.write.biff.RowsExceededException;
  * @author wangyanjun
  * @version $Id: ExcelDemo.java, v 0.1 2018年1月24日 下午3:16:37 wangyanjun Exp $
  */
-public class ExcelDemo {
+public class ExcelSample {
 
     /**
      * <pre>

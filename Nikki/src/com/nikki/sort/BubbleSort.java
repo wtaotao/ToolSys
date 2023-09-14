@@ -1,4 +1,4 @@
-package com.nikki.sample;
+package com.nikki.sort;
 
 public class BubbleSort {
 	/**
