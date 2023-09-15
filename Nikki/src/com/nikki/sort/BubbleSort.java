@@ -8,7 +8,7 @@ public class BubbleSort {
 	 * @param value
 	 * @return
 	 */
-	int[] generateRandomArray(int size, int value) {
+	public int[] generateRandomArray(int size, int value) {
 		// 在java中，Math.random() ->double(0,1)
 		// (int)((size+1)*Math.random())--->产生的是[0,size]之间的整数
 		// 生成长度随机的数组，数组的最大长度是size的长度
@@ -21,7 +21,7 @@ public class BubbleSort {
 		return arr;
 	}
 
-	int[] sort(int[] array) {
+	public int[] sort(int[] array) {
 		// 一定要记住判断边界条件
 		if (array == null || array.length < 2) {
 			return array;

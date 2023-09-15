@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
-import com.nikki.constant.WeekDay;
+//import com.nikki.constant.WeekDay;
 
 public class EncryptTest {
 
