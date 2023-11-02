@@ -21,8 +21,13 @@ public class TestSample {
 //		(new Test()).testBubbleSort();
 //		(new Test()).checkpwd("123456");
 //		(new Test()).testHashMap1();
-		(new TestSample()).testThread1();
-		(new TestSample()).testThread2();
+//		(new TestSample()).testThread1();
+//		(new TestSample()).testThread2();
+	    
+	    int[] array = {4,6,8,1,2,5};
+	    for(int i=0; i<array.length; ++i) {
+	        System.out.print(array[i] + "-");
+	    }
 	}
 	
 	private void testThread1() {
