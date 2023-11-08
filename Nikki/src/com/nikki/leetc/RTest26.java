@@ -34,7 +34,8 @@ public class RTest26 {
      */
     public static void main(String[] args) {
 //        int[] nums = {1,1,2};
-        int[] nums = {0,0,1,1,1,2,2,3,3,4};
+        int[] nums = {1,1};
+//        int[] nums = {0,0,1,1,1,2,2,3,3,4};
         Print.stringOut("The input array is:");
         Print.arrayOut(nums);
         Print.stringOut("The new array length is:" + removeDuplicates(nums));
@@ -45,7 +46,7 @@ public class RTest26 {
     public static int removeDuplicates(int[] nums) {
         if (nums.length==1) return 1;
         int temp=nums[0], i=1, count=0;
-        for (; i<nums.length-count-1;) {
+        for (; i<=nums.length-count-1;) {
             if (nums[i]==temp) {
                 for (int j=i; j<nums.length-count-1; j++) {
                     nums[j] = nums[j+1];
