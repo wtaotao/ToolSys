@@ -4,6 +4,8 @@
  */
 package com.nikki.leetc;
 
+import java.util.Arrays;
+
 import com.nikki.out.Print;
 
 /**
@@ -43,7 +45,7 @@ public class RTest274 {
      * @return
      */
     public static int hIndex(int[] citations) {
-        sort(citations);
+    	Arrays.sort(citations);
         int h = 0;
         for(int i=citations.length-1; i>=0; i--) {
             if (citations[i] >= h+1) {
