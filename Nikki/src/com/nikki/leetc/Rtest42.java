@@ -4,6 +4,8 @@
  */
 package com.nikki.leetc;
 
+import com.nikki.out.Print;
+
 /**
  * <pre>
  * 接雨水
@@ -25,17 +27,22 @@ public class Rtest42 {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
+//        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int[] height = {4,2,0,3,2,5};
+        Print.stringOut("The sum is:" + trap(height));
     }
-    public int trap(int[] height) {
+    public static int trap(int[] height) {
         int max = 0, sum = 0;
         for(int i=0; i<height.length; i++) {
             if(max < height[i]) max = height[i];
         }
         for(int i=1; i<=max; i++) {
-            for()
+            for(int j=0; j<height.length; j++) {
+                height[j] = height[j]-1;
+            }
+            sum = sum + count(height);
         }
+        return sum;
     }
     
     private static int count(int[] a) {
