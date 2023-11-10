@@ -4,6 +4,8 @@
  */
 package com.nikki.leetc;
 
+import com.nikki.out.Print;
+
 /**
  * <pre>
  * 罗马数字转整数
@@ -15,7 +17,7 @@ package com.nikki.leetc;
  * @time 上午10:51:47 
  *
  */
-public class RTest {
+public class RTest13 {
 
     /**
      * <pre>
@@ -25,8 +27,12 @@ public class RTest {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
+//        String s = "III";
+//        String s = "IV";
+//        String s = "IX";
+//        String s = "LVIII";
+        String s = "MCMXCIV";
+        Print.stringOut("The number is:" + romanToInt(s));
     }
 
     /**
@@ -53,24 +59,24 @@ public class RTest {
      * @param s
      * @return
      */
-    public int romanToInt(String s) {
+    public static int romanToInt(String s) {
+        int number = 0;
         for (int i=0; i < s.length(); i++) {
-            if (s.charAt(i) == 'I' || s.charAt(i) == 'X' || s.charAt(i) == 'C') {
-                if ( (i < s.length()-1) && (s.charAt(i) == 'I' || s.charAt(i) == 'X' || s.charAt(i) == 'C') ) {
-                    char c = s.charAt(0);
-                    switch(c) {
-                        case 'I': number = 1; break;
-                        case 'V': number = 5; break;
-                        case 'X': number = 10; break;
-                    }
+            if (i < s.length()-1) {
+                String subStr = s.substring(i, i+2);
+                if (subStr.equalsIgnoreCase("IV") || subStr.equalsIgnoreCase("IX") || subStr.equalsIgnoreCase("XL") || 
+                        subStr.equalsIgnoreCase("XC") || subStr.equalsIgnoreCase("CD") || subStr.equalsIgnoreCase("CM")) {
+                    number = number + transSpecial(subStr);
+                    i++;
+                    continue;
                 }
             }
+            number = number + transNormal(s.charAt(i));
         }
-        return 0;
+        return number;
     }
     
-    private static int transNormal(String s) {
-        char c = s.charAt(0);
+    private static int transNormal(char c) {
         int number = 0;
         switch(c) {
             case 'I': number = 1; break;
