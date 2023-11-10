@@ -40,8 +40,8 @@ public class RTest169 {
      * 
      * <pre>
      *     n == nums.length
-     *     1 <= n <= 5 * 104
-     *     -109 <= nums[i] <= 109
+     *     1 <= n <= 5 * 10(4次幂)
+     *     -10（9次幂） <= nums[i] <= 10（9次幂）
      * </pre>
      *
      * @param nums
@@ -51,9 +51,9 @@ public class RTest169 {
         
         if (nums==null) return 256;
         
-        int[] count = new int[109*2+1];
+        int[] count = new int[(int) (2*Math.pow(10, 9)+1)];
         for (int i=0; i<nums.length; i++) {
-            int j = nums[i] + 109;
+            int j = (int) (nums[i] + Math.pow(10, 9));
             count[j]++;
         }
         
@@ -66,7 +66,7 @@ public class RTest169 {
         }
         
         if (temp > nums.length/2) {
-            return index-109;
+            return (int) (index-Math.pow(10, 9));
         } else
         {
             return 0;

@@ -28,7 +28,8 @@ public class RTest45 {
      */
     public static void main(String[] args) {
 //        int[] nums = {2,3,1,1,4};
-        int[] nums = {2,3,0,1,4};
+//        int[] nums = {2,3,0,1,4};
+        int[] nums = {0};
         Print.stringOut("The step number is:" + jump(nums));
     }
     /**
@@ -56,6 +57,9 @@ public class RTest45 {
                 if (index+submax >= nums.length-1) {
                     break;
                 }
+            }
+            if (submax == 0) {
+            	return -1;
             }
             index = index+submax;
             submax = 0;

@@ -17,7 +17,7 @@ import com.nikki.out.Print;
  * @time 上午9:11:14 
  *
  */
-public class ArrayTest {
+public class RTest88 {
 
     /**
      * <pre>
