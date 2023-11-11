@@ -61,7 +61,7 @@ public class RTest151 {
                 start--;
             };
             
-            if (reverseStrBf.length() != 0) reverseStrBf.append(" ");
+            if (reverseStrBf.length() != 0 && start!= end) reverseStrBf.append(" ");
             reverseStrBf.append(s.substring(start+1, end+1));
             
             end = start;

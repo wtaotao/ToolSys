@@ -28,7 +28,9 @@ public class RTest14 {
      */
     public static void main(String[] args) {
 //        String[] strs = {"flower","flow","flight"};
-        String[] strs = {"dog","racecar","car"};
+//        String[] strs = {"dog","racecar","car"};
+//        String[] strs = {"ab", "a"};
+        String[] strs = {"flower","flower","flower","flower"};
         Print.stringOut("The longest prefix is:" + longestCommonPrefix(strs));
     }
     /**
@@ -47,11 +49,12 @@ public class RTest14 {
     public static String longestCommonPrefix(String[] strs) {
         int index = 0;
         String prefix = "";
+        if (strs[0].length() < 1) return "";
         do {
             char c = strs[0].charAt(index);
             int i=1;
             for (; i<strs.length; i++) {
-                if ( (i < strs[index].length()) && (strs[i].charAt(index) != c) ) {
+                if ((index >= strs[i].length()) || (index < strs[i].length()) && (strs[i].charAt(index) != c) ) {
                     break;
                 }
             }

@@ -21,7 +21,8 @@ public class RTest58 {
     public static void main(String[] args) {
 //        String s = "Hello World";
 //        String s = "   fly me   to   the moon  ";
-        String s = "luffy is still joyboy";
+//        String s = "luffy is still joyboy";
+        String s = "day";
         Print.stringOut("The length of last word is:" + lengthOfLastWord(s));
     }
     /**
@@ -38,15 +39,16 @@ public class RTest58 {
      * @return
      */
     public static int lengthOfLastWord(String s) {
+    	if (s.trim().length() == 1) return 1;    	
         int lastLength = 0;
         
         int end = s.length()-1;
-        while (s.charAt(end) == ' ' && end > 0) {
+        while (end >= 0 && s.charAt(end) == ' ') {
             end--;
         };
         
         int start = end;
-        while (s.charAt(start) != ' ' && start > 0) {
+        while (start >= 0 && s.charAt(start) != ' ') {
             start--;
         };
         

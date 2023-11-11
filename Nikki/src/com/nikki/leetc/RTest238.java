@@ -45,16 +45,32 @@ public class RTest238 {
      * @param nums
      * @return
      */
+//    public static int[] productExceptSelf(int[] nums) {
+//        int[] answer = new int[nums.length];
+//        for (int i=0; i<nums.length; i++) {
+//            answer[i] = 1;
+//        }
+//        for (int i=0; i<nums.length; i++) {
+//            for (int j=0; j<nums.length; j++) {
+//                if (j != i) answer[i] = nums[j]*answer[i];
+//            }
+//        }
+//        return answer;
+//    }
     public static int[] productExceptSelf(int[] nums) {
-        int[] answer = new int[nums.length];
-        for (int i=0; i<nums.length; i++) {
-            answer[i] = 1;
+        int len = nums.length;
+        if (len == 0) return new int[0];
+        int[] ans = new int[len];
+        ans[0] = 1;
+        int tmp = 1;
+        for (int i = 1; i < len; i++) {
+            ans[i] = ans[i - 1] * nums[i - 1];
         }
-        for (int i=0; i<nums.length; i++) {
-            for (int j=0; j<nums.length; j++) {
-                if (j != i) answer[i] = nums[j]*answer[i];
-            }
+        for (int i = len - 2; i >= 0; i--) {
+            tmp *= nums[i + 1];
+            ans[i] *= tmp;
         }
-        return answer;
+
+        return ans;
     }
 }

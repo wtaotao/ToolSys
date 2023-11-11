@@ -1,4 +1,7 @@
 package com.nikki.leetc;
+
+import com.nikki.out.Print;
+
 /**
  * 跳跃游戏
  * @author Jesse
@@ -7,7 +10,8 @@ package com.nikki.leetc;
 public class Rtest55 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] nums = {1,2,3};
+		Print.stringOut("Can jump? " + canJump(nums));
 
 	}
 	/**
@@ -16,19 +20,24 @@ public class Rtest55 {
 	 * @param nums
 	 * @return
 	 */
-    public boolean canJump(int[] nums) {
+    public static boolean canJump(int[] nums) {
     	
-       if (nums[nums.length-1] == 0) return true;    	
-       int index = 0, value=0;
-       do {
-    	   if (index == nums.length-1) {
-    		   return true;
-    	   } else {
-    		   if (nums[index] == 0) return false;
-    	   }
-    	   value = nums[index];
-    	   index = index + value;
-       }while(index <= (nums.length-1));
-       return false;
+        if (nums == null) {
+            return false;
+        }
+        //前n-1个元素能够跳到的最远距离
+        int k = 0;
+        for (int i = 0; i <= k; i++) {
+            //第i个元素能够跳到的最远距离
+            int temp = i + nums[i];
+            //更新最远距离
+            k = Math.max(k, temp);
+            //如果最远距离已经大于或等于最后一个元素的下标,则说明能跳过去,退出. 减少循环
+            if (k >= nums.length - 1) {
+                return true;
+            }
+        }
+        //最远距离k不再改变,且没有到末尾元素
+        return false;
     }
 }

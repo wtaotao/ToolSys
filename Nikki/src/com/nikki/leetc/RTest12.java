@@ -63,7 +63,7 @@ public class RTest12 {
         StringBuffer romanBuf = new StringBuffer(); 
         int kilo = num/1000;
         for (int i=1; i<=kilo; i++) {
-            romanBuf.append(transToRoman(kilo*1000));
+            romanBuf.append(transToRoman(1000));
         }
         int handreds = (num%1000)/100;
         romanBuf.append(transToRoman(handreds*100));
@@ -91,8 +91,13 @@ public class RTest12 {
             case 8: roman = "VIII"; break;
             case 9: roman = "IX"; break;
             case 10: roman = "X"; break;
+            case 20: roman = "XX"; break;
+            case 30: roman = "XXX"; break;
             case 40: roman = "XL"; break;
             case 50: roman = "L"; break;
+            case 60: roman = "LX"; break;
+            case 70: roman = "LXX"; break;
+            case 80: roman = "LXXX"; break;
             case 90: roman = "XC"; break;
             case 100: roman = "C"; break;
             case 200: roman = "CC"; break;
@@ -104,6 +109,7 @@ public class RTest12 {
             case 800: roman = "DCCC"; break;
             case 900: roman = "CM"; break;
             case 1000: roman = "M"; break;
+//            case 2000: roman = "MM"; break;
             default: ;
         }
         return roman;
