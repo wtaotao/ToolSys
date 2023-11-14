@@ -1,4 +1,9 @@
 package com.nikki.leetc.palindrome;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 三数之和
  * @author Jesse
@@ -26,6 +31,12 @@ public class RTest15 {
 	 * @return
 	 */
 	public List<List<Integer>> threeSum(int[] nums) {
-		
+	    List<List<Integer>> list = new ArrayList<List<Integer>>();
+	    if (nums == null || nums.length < 3) {
+	        return list;
+	    }
+	    Arrays.sort(nums);
+	    
+	    return list;
 	}
 }

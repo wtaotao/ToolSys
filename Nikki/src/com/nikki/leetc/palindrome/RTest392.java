@@ -1,4 +1,7 @@
 package com.nikki.leetc.palindrome;
+
+import com.nikki.out.Print;
+
 /**
  * 判断子序列
  * @author Jesse
@@ -7,7 +10,8 @@ package com.nikki.leetc.palindrome;
 public class RTest392 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		String s = "abc", t = "ahbgdc";
+		Print.stringOut("Is subSequence？" + isSubsequence(s, t));
 
 	}
 	/**
@@ -23,7 +27,21 @@ public class RTest392 {
 	 * @param t
 	 * @return
 	 */
-	public boolean isSubsequence(String s, String t) {
-		
+	public static boolean isSubsequence(String s, String t) {
+	    boolean isSub = false;
+		if (s == null || t == null || s.length() > t.length()) return isSub;
+		int i = 0, j = 0;
+		while(i < s.length() && j < t.length()) {
+		    if (s.charAt(i) == t.charAt(j)) {
+		        i++;
+		        if (i < s.length()) {
+		            j++;
+		        }
+		    } else {
+		        j++;
+		    }
+		}
+		if (i == s.length() && j < t.length()) isSub = true; 
+	    return isSub;
 	}
 }

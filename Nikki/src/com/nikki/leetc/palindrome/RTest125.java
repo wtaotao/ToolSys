@@ -1,4 +1,7 @@
 package com.nikki.leetc.palindrome;
+
+import com.nikki.out.Print;
+
 /**
  * 验证回文串
  * @author Jesse
@@ -7,7 +10,9 @@ package com.nikki.leetc.palindrome;
 public class RTest125 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+//	    String s = "A man, a plan, a canal: Panama";
+	    String s = "race a car";
+		Print.stringOut("isPalindrome ? " + isPalindrome(s));
 
 	}
 	/**
@@ -25,7 +30,30 @@ public class RTest125 {
 	 * @param s
 	 * @return
 	 */
-	public boolean isPalindrome(String s) {
-		
+	public static boolean isPalindrome(String s) {
+		boolean isPalindrome = false;
+		if (s == null || s.length() == 0) return isPalindrome;
+		int start = 0, end = s.length()-1;
+		s = s.toLowerCase();
+		while (start < end) {
+		    char startC = s.charAt(start), endC = s.charAt(end);
+		    if (!(startC >= 'a' && startC <= 'z') && !(startC >= 0 && startC <= 9)) {
+		        start++;
+		        continue;
+		    }
+		    if (!(endC >= 'a' && endC <= 'z') && !(endC >= 0 && endC <= 9)) {
+		        end--;
+		        continue;
+		    }
+		    if (startC == endC) {
+		        start++;
+		        end--;
+		    } else {
+		        isPalindrome = false;
+		        break;
+		    }
+		}
+		if (start >= end) isPalindrome = true;
+	    return isPalindrome;
 	}
 }

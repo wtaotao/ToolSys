@@ -1,4 +1,7 @@
 package com.nikki.leetc.palindrome;
+
+import com.nikki.out.Print;
+
 /**
  * 盛最多水的容器
  * @author Jesse
@@ -7,8 +10,8 @@ package com.nikki.leetc.palindrome;
 public class RTest11 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] height = {1,8,6,2,5,4,8,3,7};
+		Print.stringOut("The max is : " + maxArea(height));
 	}
 	/**
 	 * 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
@@ -21,7 +24,27 @@ public class RTest11 {
 	 * @param height
 	 * @return
 	 */
-	public int maxArea(int[] height) {
+	public static int maxArea(int[] height) {
+	    /**
+	     * 思路：遍历每个height，找到离它距离最远的那个不小于它的height的距离；如果都比它小，则记为0；最后输出最大水量
+	     */
+	    int max = 0;
+	    if (height.length <= 1) return max;
+	    for (int i=0; i<height.length; i++) {
+	        int submax = 0;
+	        for (int j=0; j!=i && j<height.length; j++) {
+	            if (height[j] >= height[i]) {
+	                int temp = Math.abs(j-i)*height[i];
+	                if (temp > submax) {
+	                    submax = temp;
+	                }
+	            }
+	        }
+	        if (submax > max) {
+	            max = submax;
+	        }
+	    }
 		
+	    return max;
 	}
 }

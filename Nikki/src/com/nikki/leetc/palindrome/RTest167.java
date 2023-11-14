@@ -1,4 +1,7 @@
 package com.nikki.leetc.palindrome;
+
+import com.nikki.out.Print;
+
 /**
  * 两数之和 II - 输入有序数组
  * @author Jesse
@@ -7,7 +10,10 @@ package com.nikki.leetc.palindrome;
 public class RTest167 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] numbers = {2,7,11,15};
+		int target =9;
+		Print.stringOut("The two sum indexs are:");
+		Print.arrayOut(twoSum(numbers, target));
 
 	}
 	/**
@@ -24,7 +30,23 @@ public class RTest167 {
 	 * @param target
 	 * @return
 	 */
-	public int[] twoSum(int[] numbers, int target) {
-		
+	public static int[] twoSum(int[] numbers, int target) {
+		int[] answer = new int[2];
+		boolean hasFound = false;
+		for (int i=0; i<numbers.length; i++) {
+		    if (numbers[i] > target) break;
+		    for (int j= i+1; j<numbers.length; j++) {
+		        if (numbers[i] + numbers[j] > target) {
+		            break;
+		        } else if (numbers[i] + numbers[j] == target) {
+		            answer[0] = i+1;
+		            answer[1] = j+1;
+		            hasFound = true;
+		            break;
+		        }
+		    }
+		    if (hasFound) break;
+		}
+		return answer;
 	}
 }

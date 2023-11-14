@@ -19,6 +19,8 @@ public class RTest3 {
 	 * @return
 	 */
 	public int lengthOfLongestSubstring(String s) {
+		int len = 0, subMax = 0;
 		
+		return len;
 	}
 }

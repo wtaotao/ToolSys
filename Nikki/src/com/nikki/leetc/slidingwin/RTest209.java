@@ -1,4 +1,7 @@
 package com.nikki.leetc.slidingwin;
+
+import com.nikki.out.Print;
+
 /**
  * 长度最小的子数组
  * @author Jesse
@@ -7,8 +10,9 @@ package com.nikki.leetc.slidingwin;
 public class RTest209 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] nums = {2,3,1,2,4,3};
+        int target = 7;
+        Print.stringOut("The shortest is :" + minSubArrayLen(target, nums));
 	}
 	/**
 	 * 给定一个含有 n 个正整数的数组和一个正整数 target 。
@@ -21,7 +25,36 @@ public class RTest209 {
 	 * @param nums
 	 * @return
 	 */
-	public int minSubArrayLen(int target, int[] nums) {
+	public static int minSubArrayLen(int target, int[] nums) {
+	    int len = 0, sum = 0, max = 0, start = 0, end = 0;
+	    
+		for (int i=0; i<nums.length; i++) {
+		    sum = sum + nums[i];
+		    if (nums[i] > max) {
+		        max = nums[i];
+		        start = i;
+		        end = i;
+		    }
+		}
+		if (target > sum) return len;
 		
+		len++;
+		start--;
+		end++;
+		while (start >=0 && end <= nums.length-1) {
+		    if (nums[start] > nums[end]) {
+		        sum = sum + nums[start];
+		        start--;
+		    } else {
+		        sum = sum + nums[end];
+		        end++;
+		    }
+		    len++;
+		    if (sum >= target) {
+		        break;
+		    }
+		}
+		
+	    return len;
 	}
 }
