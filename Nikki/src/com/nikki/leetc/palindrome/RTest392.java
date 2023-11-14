@@ -30,6 +30,7 @@ public class RTest392 {
 	public static boolean isSubsequence(String s, String t) {
 	    boolean isSub = false;
 		if (s == null || t == null || s.length() > t.length()) return isSub;
+		if (s.length() == t.length() && s.equals(t)) isSub = true;
 		int i = 0, j = 0;
 		while(i < s.length() && j < t.length()) {
 		    if (s.charAt(i) == t.charAt(j)) {

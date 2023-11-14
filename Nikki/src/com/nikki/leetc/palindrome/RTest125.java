@@ -11,7 +11,8 @@ public class RTest125 {
 
 	public static void main(String[] args) {
 //	    String s = "A man, a plan, a canal: Panama";
-	    String s = "race a car";
+//	    String s = "race a car";
+	    String s = "0P";
 		Print.stringOut("isPalindrome ? " + isPalindrome(s));
 
 	}
@@ -37,7 +38,7 @@ public class RTest125 {
 		s = s.toLowerCase();
 		while (start < end) {
 		    char startC = s.charAt(start), endC = s.charAt(end);
-		    if (!(startC >= 'a' && startC <= 'z') && !(startC >= 0 && startC <= 9)) {
+		    if (!(startC >= 'a' && startC <= 'z') && !(startC >= '0' && startC <= '9')) {
 		        start++;
 		        continue;
 		    }

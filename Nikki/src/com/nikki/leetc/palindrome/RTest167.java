@@ -34,7 +34,7 @@ public class RTest167 {
 		int[] answer = new int[2];
 		boolean hasFound = false;
 		for (int i=0; i<numbers.length; i++) {
-		    if (numbers[i] > target) break;
+//		    if (numbers[i] > target) break;
 		    for (int j= i+1; j<numbers.length; j++) {
 		        if (numbers[i] + numbers[j] > target) {
 		            break;
