@@ -1,4 +1,9 @@
 package com.nikki.leetc.matrix;
+
+import java.util.HashSet;
+
+import com.nikki.out.Print;
+
 /**
  * 有效的数独
  * @author Jesse
@@ -6,17 +11,17 @@ package com.nikki.leetc.matrix;
  */
 public class RTest36 {
 	public static void main(String[] args) {
-//		board = 
-//				[["5","3",".",".","7",".",".",".","."]
-//				,["6",".",".","1","9","5",".",".","."]
-//				,[".","9","8",".",".",".",".","6","."]
-//				,["8",".",".",".","6",".",".",".","3"]
-//				,["4",".",".","8",".","3",".",".","1"]
-//				,["7",".",".",".","2",".",".",".","6"]
-//				,[".","6",".",".",".",".","2","8","."]
-//				,[".",".",".","4","1","9",".",".","5"]
-//				,[".",".",".",".","8",".",".","7","9"]]
-//		true
+		char[][] board = 
+            {{'5','3','.','.','7','.','.','.','.'}
+            ,{'6','.','.','1','9','5','.','.','.'}
+            ,{'.','9','8','.','.','.','.','6','.'}
+            ,{'8','.','.','.','6','.','.','.','3'}
+            ,{'4','.','.','8','.','3','.','.','1'}
+            ,{'7','.','.','.','2','.','.','.','6'}
+            ,{'.','6','.','.','.','.','2','8','.'}
+            ,{'.','.','.','4','1','9','.','.','5'}
+            ,{'.','.','.','.','8','.','.','7','9'}};
+		Print.stringOut("Is valid sudoku?" + isValidSudoku(board));
 	}
 	/**
 	 * 请你判断一个 9 x 9 的数独是否有效。只需要 根据以下规则 ，验证已经填入的数字是否有效即可。
@@ -30,7 +35,49 @@ public class RTest36 {
 	 * @param board
 	 * @return
 	 */
-	public boolean isValidSudoku(char[][] board) {
+	public static boolean isValidSudoku(char[][] board) {
+	    boolean isValid = true;
+		HashSet<Character>[] columnFlag = new HashSet[9];
+		HashSet<Character>[] rowFlag = new HashSet[9];
+		for (int i = 0; i < 9; i++) {
+		    HashSet<Character> set = new HashSet<Character>();
+//		    for (int j = 1; j <= 9; j++) {
+//		        set.add(j);
+//		    }
+		    columnFlag[i] = set;
+		    rowFlag[i] = (HashSet<Character>) set.clone();
+		}
+		HashSet<Character>[][] subMartixFlag = new HashSet[3][3];
+		for (int i = 0; i < 3; i++) {
+		    for (int j = 0; j < 3; j++) {
+		        HashSet<Character> set = new HashSet<Character>();
+//		        for (int k = 1; k <= 9; k++) {
+//		            set.add(k);
+//		        }
+		        subMartixFlag[i][j] = set;
+		    }
+		}
 		
+		for (int i = 0; i < 9; i++) {
+		    for (int j = 0; j < 9; j++) {
+		        if (board[i][j] == '.') {
+		            continue;
+		        }
+		        if (rowFlag[i].contains(board[i][j])) {
+		            isValid = false;
+		            break;
+		        }
+		        if (columnFlag[j].contains(board[i][j])) {
+		            isValid = false;
+		            break;
+		        }
+		        if (subMartixFlag[i/3][j/3].contains(board[i][j])) {
+		            isValid = false;
+		            break;
+		        }
+		    }
+		    if (!isValid) break; 
+		}
+	    return isValid;
 	}
 }

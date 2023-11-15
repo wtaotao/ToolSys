@@ -1,4 +1,9 @@
 package com.nikki.leetc.slidingwin;
+
+import java.util.HashMap;
+
+import com.nikki.out.Print;
+
 /**
  * 无重复字符的最长子串
  * @author Jesse
@@ -7,8 +12,8 @@ package com.nikki.leetc.slidingwin;
 public class RTest3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String s = "abcabcbb";
+		Print.stringOut("The longest number is:" + lengthOfLongestSubstring(s));
 	}
 	/**
 	 * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -18,9 +23,24 @@ public class RTest3 {
 	 * @param s
 	 * @return
 	 */
-	public int lengthOfLongestSubstring(String s) {
+	public static int lengthOfLongestSubstring(String s) {
+	    if (s == null || s.length() == 0) return 0;
 		int len = 0, subMax = 0;
-		
+		HashMap<Character, Integer> cmap = new HashMap<Character, Integer>();
+		int i = 0, j = 0;
+		while (i < s.length()) {
+		    if (!cmap.containsKey(s.charAt(i))) {
+		        cmap.put(s.charAt(i), i);
+		    } else {
+		        subMax = i-j;
+		        if (len < subMax) {
+		            len = subMax;
+		        }
+		        j = cmap.get(s.charAt(i)) + 1;
+		        cmap.put(s.charAt(i), i);
+		    }
+		    i++;
+		}
 		return len;
 	}
 }

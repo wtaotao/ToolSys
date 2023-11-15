@@ -1,4 +1,8 @@
 package com.nikki.leetc.matrix;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 螺旋矩阵
  * @author Jesse
@@ -18,6 +22,10 @@ public class RTest54 {
 	 * @return
 	 */
 	public List<Integer> spiralOrder(int[][] matrix) {
-		
+		List<Integer> list = new ArrayList<Integer>();
+		for () {
+		    
+		}
+		return list;
 	}
 }

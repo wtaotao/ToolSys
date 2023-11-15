@@ -1,4 +1,8 @@
 package com.nikki.leetc.slidingwin;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 串联所有单词的子串
  * @author Jesse
@@ -27,6 +31,20 @@ public class RTest30 {
 	 * @return
 	 */
 	public List<Integer> findSubstring(String s, String[] words) {
+		List<Integer> indexs = new ArrayList<Integer>();
+		if (s == null || s.length() < words.length*words[0].length()) return indexs;
+		for (int i = 0; i < words.length; i++) {
+		    
+		}
+		int i = 0;
+		while (i < s.length()) {
+		    for (int j = 0; j < words.length; j++) {
+		        if (s.startsWith(words[j])) {
+		            
+		        }
+		    }
+		}
 		
+		return indexs;
 	}
 }

@@ -36,6 +36,13 @@ public class RTest15 {
 	        return list;
 	    }
 	    Arrays.sort(nums);
+	    int minabs = nums[nums.length-1], index = nums.length-1;
+	    for (int i = 0; i < nums.length; i++) {
+	        if (Math.abs(nums[i]) < minabs) {
+	            minabs = Math.abs(nums[i]);
+	            index = i;
+	        }
+	    }
 	    
 	    return list;
 	}

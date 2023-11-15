@@ -1,4 +1,9 @@
 package com.nikki.leetc.slidingwin;
+
+import java.util.HashMap;
+
+import com.nikki.out.Print;
+
 /**
  * 最小覆盖子串
  * @author Jesse
@@ -7,8 +12,8 @@ package com.nikki.leetc.slidingwin;
 public class RTest76 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String s = "ADOBECODEBANC", t = "ABC";
+		Print.stringOut(minWindow(s, t));
 	}
 	/**
 	 * 给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 "" 。
@@ -22,7 +27,41 @@ public class RTest76 {
 	 * @param t
 	 * @return
 	 */
-	public String minWindow(String s, String t) {
-		
+	public static String minWindow(String s, String t) {
+	    StringBuffer subbuf = new StringBuffer();
+	    HashMap<Character, Integer> charMap = new HashMap<Character, Integer>();
+	    for (int i = 0; i < t.length(); i++) {
+	        char c = t.charAt(i);
+	        if (charMap.containsKey(c)) {
+	            charMap.put(c, charMap.get(c)+1);
+	        } else {
+	            charMap.put(c, 1);
+	        }
+	    }
+	    int start = 0, end = 0;
+	    boolean isCounting = false;
+	    while (end < s.length()) {
+	        char key = s.charAt(end);
+	        if (charMap.containsKey(key)) {
+	            if(!isCounting) {
+	                start = end;
+	                isCounting = true;
+	            }
+	            int count = charMap.get(key) - 1;
+	            if (count == 0) {
+	                charMap.remove(key);
+	            } else {
+	                charMap.put(key, count);
+	            }
+	        }
+	        if (charMap.isEmpty()) {
+	            break;
+	        }
+	        end++;
+	    }
+	    if (charMap.isEmpty()) {
+	       subbuf.append(s.substring(start, end+1)) ;
+	    } 
+		return subbuf.toString();
 	}
 }
