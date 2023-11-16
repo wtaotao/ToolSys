@@ -1,4 +1,9 @@
 package com.nikki.leetc.hash;
+
+import java.util.HashSet;
+
+import com.nikki.out.Print;
+
 /**
  * 赎金信
  * @author Jesse
@@ -7,8 +12,8 @@ package com.nikki.leetc.hash;
 public class RTest383 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String ransomNote = "a", magazine = "b";
+		Print.stringOut("Can construct?" + canConstruct(ransomNote, magazine));
 	}
 	/**
 	 * 给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
@@ -23,7 +28,32 @@ public class RTest383 {
 	 * @param magazine
 	 * @return
 	 */
-	public boolean canConstruct(String ransomNote, String magazine) {
-		
+	public static boolean canConstruct(String ransomNote, String magazine) {
+		boolean canConstruct = false;
+		if (ransomNote == null || ransomNote.length() == 0) {
+		    return true;
+		} else {
+		    if (magazine == null || magazine.length() < ransomNote.length()) {
+		        return false;
+		    }
+		}
+		HashSet<Character> set = new HashSet<Character>();
+		//假定无重复字符，否则需修改程序
+		for (int i = 0; i < magazine.length(); i++) {
+		    set.add(magazine.charAt(i));
+		}
+		int i = 0;
+		for (; i < ransomNote.length(); i++) {
+		    if (set.contains(ransomNote.charAt(i))) {
+		        set.remove(ransomNote.charAt(i));
+		    } else {
+		        canConstruct = false;
+		        break;
+		    }
+		}
+		if (i == ransomNote.length()) {
+		    canConstruct = true;
+		}
+		return canConstruct;
 	}
 }

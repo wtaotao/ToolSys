@@ -1,4 +1,9 @@
 package com.nikki.leetc.hash;
+
+import java.util.HashMap;
+
+import com.nikki.out.Print;
+
 /**
  * 单词规律
  * @author Jesse
@@ -7,8 +12,8 @@ package com.nikki.leetc.hash;
 public class RTest290 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String pattern = "abba", s = "dog cat cat dog";
+		Print.stringOut("Is match?" + wordPattern(pattern, s));
 	}
 	/**
 	 * 给定一种规律 pattern 和一个字符串 s ，判断 s 是否遵循相同的规律。
@@ -19,7 +24,30 @@ public class RTest290 {
 	 * @param s
 	 * @return
 	 */
-	public boolean wordPattern(String pattern, String s) {
-		
+	public static boolean wordPattern(String pattern, String s) {
+	    boolean flag = false;
+	    String[] words = s.split(" ");
+	    //假定pattern和s都非空
+	    if (pattern.length() != words.length) {
+	        flag = false;
+	        return flag;
+	    }
+	    HashMap<Character, String> map = new HashMap<Character, String>();
+	    int i = 1;
+	    for (; i < pattern.length(); i++) {
+	        char c = pattern.charAt(i);
+	        if (map.containsKey(c)) {
+	            if (!words[i].equals(map.get(c))) {
+	                flag = false;
+	                return flag;
+	            } 
+	        } else {
+	            map.put(c, words[i]);
+	        }
+	    }
+	    if (i == pattern.length()) {
+	        flag = true;
+	    }
+		return flag;
 	}
 }

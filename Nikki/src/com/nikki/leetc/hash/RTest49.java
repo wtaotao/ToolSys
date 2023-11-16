@@ -1,4 +1,8 @@
 package com.nikki.leetc.hash;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 字母异位词分组
  * @author Jesse
@@ -19,6 +23,8 @@ public class RTest49 {
 	 * @return
 	 */
 	public List<List<String>> groupAnagrams(String[] strs) {
+		List<List<String>> list = new ArrayList<>();
 		
+		return list;
 	}
 }

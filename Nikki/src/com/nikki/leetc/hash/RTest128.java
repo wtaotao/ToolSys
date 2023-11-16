@@ -1,4 +1,10 @@
 package com.nikki.leetc.hash;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.nikki.out.Print;
+
 /**
  * 最长连续序列
  * @author Jesse
@@ -7,8 +13,8 @@ package com.nikki.leetc.hash;
 public class RTest128 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] nums = {1, 2, 3, 4};
+        Print.stringOut("The longest is:" + longestConsecutive(nums));
 	}
 	/**
 	 * 给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
@@ -19,7 +25,19 @@ public class RTest128 {
 	 * @param nums
 	 * @return
 	 */
-	public int longestConsecutive(int[] nums) {
-		
+	public static int longestConsecutive(int[] nums) {
+	    int len = 0;
+	    int[] temp = new int[nums.length];
+	    for (int i = 0; i < nums.length; i++) {
+	        if (nums[i] > 0 && nums[i] <= temp.length) {
+	            temp[nums[i]-1] = nums[i];
+	        }
+	    }
+	    int i = 0;
+	    while (i < temp.length && temp[i] != 0) {
+	        len++;
+	        i++;
+	    }
+	    return len;
 	}
 }

@@ -1,4 +1,9 @@
 package com.nikki.leetc.hash;
+
+import java.util.Arrays;
+
+import com.nikki.out.Print;
+
 /**
  * 两数之和
  * @author Jesse
@@ -7,8 +12,9 @@ package com.nikki.leetc.hash;
 public class RTest1 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] nums = {2,7,11,15};
+		int target = 9;
+		Print.arrayOut(twoSum(nums, target));
 	}
 	/**
 	 * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
@@ -21,7 +27,24 @@ public class RTest1 {
 	 * @param target
 	 * @return
 	 */
-	public int[] twoSum(int[] nums, int target) {
+	public static int[] twoSum(int[] nums, int target) {
+		int[] indexs = new int[2];
+		if (nums == null || nums.length == 1) return indexs;
 		
+		boolean hasFound = false;
+		//假定输入的数组是有序的，故不会影响到下表变动
+//		Arrays.sort(nums);
+		for (int i = 0; i < nums.length; i++) {
+		    indexs[0] = i;
+		    for (int j = i+1; j < nums.length; j++) {
+		        if (nums[i] + nums[j] == target) {
+		            indexs[1] = j;
+		            hasFound = true;
+		            break;
+		        }
+		    }
+		    if (hasFound) break;
+		}
+		return indexs;
 	}
 }

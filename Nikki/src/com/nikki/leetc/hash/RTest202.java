@@ -1,4 +1,7 @@
 package com.nikki.leetc.hash;
+
+import com.nikki.out.Print;
+
 /**
  * 快乐数
  * @author Jesse
@@ -7,8 +10,8 @@ package com.nikki.leetc.hash;
 public class RTest202 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int n = 19;
+		Print.stringOut("Is happy?" + isHappy(n));
 	}
 	/**
 	 * 编写一个算法来判断一个数 n 是不是快乐数。
@@ -27,7 +30,20 @@ public class RTest202 {
 	 * @param n
 	 * @return
 	 */
-	public boolean isHappy(int n) {
-		
+	public static boolean isHappy(int n) {
+		boolean isHappy = false;
+		//到什么时候循环结束？暂时假定以10次
+		int count = 10;
+		//假定n最大为9999
+		while (count > 0 || n != 1) {
+		    int kilo = n/1000;
+		    int hundreds = (n%1000)/100;
+		    int tens = (n%100)/10;
+		    int unit = n%10;
+		    n = (int) (Math.pow(kilo, 2) + Math.pow(hundreds, 2) + Math.pow(tens, 2) + Math.pow(unit, 2));
+		    count--;
+		}
+		if (n == 1) isHappy = true;
+		return isHappy;
 	}
 }

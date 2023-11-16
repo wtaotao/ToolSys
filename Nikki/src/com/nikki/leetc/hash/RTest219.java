@@ -1,4 +1,7 @@
 package com.nikki.leetc.hash;
+
+import com.nikki.out.Print;
+
 /**
  * 存在重复元素 II
  * @author Jesse
@@ -7,7 +10,9 @@ package com.nikki.leetc.hash;
 public class RTest219 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] nums = {1,2,3,1};
+		int k = 3;
+		Print.stringOut("Is contains?" + containsNearbyDuplicate(nums, k));
 
 	}
 	/**
@@ -19,7 +24,20 @@ public class RTest219 {
 	 * @param k
 	 * @return
 	 */
-	public boolean containsNearbyDuplicate(int[] nums, int k) {
-		
+	public static boolean containsNearbyDuplicate(int[] nums, int k) {
+		boolean isContains = false;
+		if (nums == null || nums.length <= 1 || k < 1) {
+		    return isContains;
+		}
+		for (int i = 0; i < nums.length; i++) {
+		    for (int j = i+1; j <= i+k && j < nums.length; j++) {
+		        if (nums[i] == nums[j]) {
+		            System.out.println("i:" + i + ", j:" + j);
+		            isContains = true;
+		            return isContains;
+		        }
+		    }
+		}
+		return isContains;
 	}
 }

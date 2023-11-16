@@ -1,4 +1,9 @@
 package com.nikki.leetc.hash;
+
+import java.util.HashMap;
+
+import com.nikki.out.Print;
+
 /**
  *  同构字符串
  * @author Jesse
@@ -7,8 +12,8 @@ package com.nikki.leetc.hash;
 public class RTest205 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String s = "egg", t = "add";
+		Print.stringOut("Is isomorphic?" + isIsomorphic(s, t));
 	}
 	/**
 	 * 给定两个字符串 s 和 t ，判断它们是否是同构的。
@@ -20,7 +25,39 @@ public class RTest205 {
 	 * @param t
 	 * @return
 	 */
-	public boolean isIsomorphic(String s, String t) {
+	public static boolean isIsomorphic(String s, String t) {
+		boolean isIsomorphic = false;
 		
+		if (s == null || t == null) {
+		    if (s == null && t == null) {
+		        isIsomorphic = true;
+		    } else {
+		        isIsomorphic = false;
+		    }
+		    return isIsomorphic;		    
+		}
+		
+		if (s.length() != t.length()) {
+		    return false;
+		}
+		
+		HashMap<Character, Character> map = new HashMap<Character, Character>();
+		int i = 0;
+		for (; i < s.length(); i++) {
+		    char c1 = s.charAt(i), c2;
+		    if (map.containsKey(c1)) {
+		        c2 = map.get(c1);
+		        if (t.charAt(i) != c2) {
+		            isIsomorphic = false;
+		            break;
+		        }
+		    } else {
+		        map.put(c1, t.charAt(i));
+		    }
+		}
+		if (i == s.length()) {
+		    isIsomorphic = true;
+		}
+		return isIsomorphic;
 	}
 }
