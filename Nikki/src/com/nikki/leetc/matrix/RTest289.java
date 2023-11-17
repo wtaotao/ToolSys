@@ -1,4 +1,7 @@
 package com.nikki.leetc.matrix;
+
+import com.nikki.out.Print;
+
 /**
  * 生命游戏
  * @author Jesse
@@ -7,8 +10,11 @@ package com.nikki.leetc.matrix;
 public class RTest289 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[][] board = {{0,1,0},{0,0,1},{1,1,1},{0,0,0}};
+		gameOfLife(board);
+		for (int i = 0; i < board.length; i++) {
+		    Print.arrayOut(board[i]);
+		}
 	}
 	/**
 	 * 根据 百度百科 ， 生命游戏 ，简称为 生命 ，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。
@@ -24,7 +30,53 @@ public class RTest289 {
 	 * 输出：[[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
 	 * @param board
 	 */
-	public void gameOfLife(int[][] board) {
-		
+	public static void gameOfLife(int[][] board) {
+	    //假定输入不为空
+	    int M = board.length;
+	    int N = board[0].length;
+	    int[][] temp = new int[M][N];
+	    for (int i = 0; i < M; i++) {
+	        for (int j = 0; j < N; j++) {
+	            temp[i][j] = board[i][j];
+	        }
+	    }
+		for (int i = 0; i < M; i++) {
+		    for (int j = 0; j < N; j++) {
+		        int number = count(temp, i, j);
+		        if (temp[i][j] == 1) {
+		            if (number < 2) {
+		                board[i][j] = 0;
+		            } else if (number == 2 || number == 3) {
+		                board[i][j] = 1;
+		            } else if (number > 3) {
+		                board[i][j] = 0;
+		            }
+		        } else if (temp[i][j] == 0) {
+		            if (number == 3) {
+		                board[i][j] = 1;
+		            }
+		        }
+		    }
+		}
+	}
+	
+	private static int count(int[][] board, int i, int j) {
+	    int count = 0;
+	    //上面一行
+	    if (i-1 >= 0) {
+	        if (j-1 >= 0 && board[i-1][j-1] == 1) count++;
+	        if (board[i-1][j] == 1) count++;
+	        if (j+1 < board[0].length && board[i-1][j+1] == 1) count++;
+	    }
+	    //本行
+	    if (j-1 >= 0 && board[i][j-1] == 1) count++;
+	    if (j+1 < board[0].length && board[i][j+1] == 1) count++;
+	    //下面一行
+	    if (i+1 < board.length) {
+	        if (j-1 >= 0 && board[i+1][j-1] == 1) count++;
+	        if (board[i+1][j] == 1) count++;
+	        if (j+1 < board[0].length && board[i+1][j+1] == 1) count++;
+	    }
+	    return count;
 	}
 }

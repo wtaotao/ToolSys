@@ -1,4 +1,10 @@
 package com.nikki.leetc.section;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nikki.out.Print;
+
 /**
  * 汇总区间
  * @author Jesse
@@ -7,8 +13,11 @@ package com.nikki.leetc.section;
 public class RTest228 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] nums = {0,1,2,4,5,7}; 
+		List<String> list = summaryRanges(nums);
+		for (String s: list) {
+		    Print.stringOut(s);
+		}
 	}
 	/**
 	 * 给定一个  无重复元素 的 有序 整数数组 nums 。
@@ -26,7 +35,40 @@ public class RTest228 {
 	 * @param nums
 	 * @return
 	 */
-	public List<String> summaryRanges(int[] nums) {
-		
+	public static List<String> summaryRanges(int[] nums) {
+		List<String> list = new ArrayList<String>();
+		if (nums == null || nums.length == 0) {
+		    return list;
+		}
+		StringBuffer sb = new StringBuffer();
+		sb.append(nums[0]);
+		int prev = nums[0];
+		for (int i = 1; i < nums.length; i++) {
+		    if (nums[i] == prev + 1) {
+		        prev++;
+		        if (i == nums.length-1) {
+		            sb.append("->").append(prev);
+		            list.add(sb.toString());
+		        }
+		    } else {
+		        if (sb.length() == 0) {
+		            sb.append(prev);
+		            list.add(sb.toString());
+		            sb = new StringBuffer();
+		            prev = nums[i];
+		            sb.append(prev);
+		        } else {
+		            sb.append("->").append(prev);
+		            list.add(sb.toString());
+		            sb = new StringBuffer();
+		            prev = nums[i];
+		            sb.append(prev);
+		        }
+		        if (i == nums.length-1) {
+		            list.add(sb.toString());
+		        }
+		    }
+		}
+		return list;
 	}
 }

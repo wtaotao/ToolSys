@@ -25,6 +25,8 @@ public class RTest452 {
 	 * @return
 	 */
 	public int findMinArrowShots(int[][] points) {
+		int min = 0;
 		
+		return min;
 	}
 }

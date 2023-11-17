@@ -24,7 +24,7 @@ public class RTest49 {
 	 */
 	public List<List<String>> groupAnagrams(String[] strs) {
 		List<List<String>> list = new ArrayList<>();
-		
+
 		return list;
 	}
 }
