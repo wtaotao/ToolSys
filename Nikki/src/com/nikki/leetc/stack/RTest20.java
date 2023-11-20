@@ -1,4 +1,9 @@
 package com.nikki.leetc.stack;
+
+import java.util.Stack;
+
+import com.nikki.out.Print;
+
 /**
  * 有效的括号
  * @author Jesse
@@ -7,8 +12,9 @@ package com.nikki.leetc.stack;
 public class RTest20 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+//		String s = "()";
+		String s = "()[]{}";
+		Print.stringOut("Is valid?" + isValid(s));
 	}
     /**
      * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
@@ -23,7 +29,44 @@ public class RTest20 {
      * @param s
      * @return
      */
-	public boolean isValid(String s) {
-		
+	public static boolean isValid(String s) {
+	    boolean valid = false;
+	    Stack<Character> stack = new Stack<Character>();
+	    for (int i = 0; i < s.length(); i++) {
+	        switch (s.charAt(i)) {
+	            case '(' : stack.push(s.charAt(i)); break;
+	            case ')' : {
+	                if (stack.peek() == '(') {
+	                    stack.pop();
+	                    break;
+	                } else {
+	                    return valid;
+	                }
+	            }
+	            case '{' : stack.push(s.charAt(i)); break;
+	            case '}' :  {
+	                if (stack.peek() == '{') {
+	                    stack.pop();
+	                    break;
+	                } else {
+	                    return valid;
+	                }
+	            }
+	            case '[' : stack.push(s.charAt(i)); break;
+	            case ']' :  {
+	                if (stack.peek() == '[') {
+	                    stack.pop();
+	                    break;
+	                } else {
+	                    return valid;
+	                }
+	            }
+	            default : return valid;
+	        }
+	    }
+	    if (stack.isEmpty()) {
+	        valid = true;
+	    }
+		return valid;
 	}
 }

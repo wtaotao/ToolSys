@@ -20,5 +20,14 @@ public class RTest19 {
 	 */
 	public ListNode removeNthFromEnd(ListNode head, int n) {
 
+	    /**
+	     * 思路：删除对应的节点，返回链表
+	     */
     }
+	
+	class ListNode {
+	    int val;
+	    ListNode next;
+	    
+	} 
 }

@@ -1,4 +1,10 @@
 package com.nikki.leetc.list;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nikki.out.Print;
+
 /**
  * 两数相加
  * @author Jesse
@@ -7,7 +13,18 @@ package com.nikki.leetc.list;
 public class RTest2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		List<Integer> l1 = new ArrayList<Integer>();
+		l1.add(2);
+		l1.add(4);
+		l1.add(3);
+		List<Integer> l2 = new ArrayList<Integer>();
+		l2.add(5);
+		l2.add(6);
+		l2.add(4);
+		List l = addTwoNumbers(l1, l2);
+		for (Object val: l) {
+		    Print.stringOut("" + val);
+		}
 
 	}
 	/**
@@ -21,7 +38,17 @@ public class RTest2 {
 	 * @param l2
 	 * @return
 	 */
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
+    public static List addTwoNumbers(List<Integer> l1, List<Integer> l2) {
+        List<Integer> list = new ArrayList<Integer>();
+        //假设两个源列表长度一样
+        int i = 0,carry = 0;
+        do {
+            int sum = l1.get(i) + l2.get(i) + carry;
+            carry = sum/10;
+            list.add(sum%10);
+            i++;
+        } while (i<l1.size());
+        if (carry == 1) list.add(1);
+        return list;
     }
 }

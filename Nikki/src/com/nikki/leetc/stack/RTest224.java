@@ -19,6 +19,12 @@ public class RTest224 {
 	 * @return
 	 */
 	public int calculate(String s) {
+		int result = 0;
+		if (s == null || s.length() < 3) return -1;
 		
+		for (int i = 0; i < s.length(); i++) {
+		    
+		}
+		return result;
 	}
 }

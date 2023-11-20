@@ -1,4 +1,7 @@
 package com.nikki.leetc.stack;
+
+import com.nikki.out.Print;
+
 /**
  * 逆波兰表达式求值
  * @author Jesse
@@ -7,7 +10,8 @@ package com.nikki.leetc.stack;
 public class RTest150 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		String[] tokens = {"2","1","+","3","*"};
+		Print.stringOut("The result is :" + evalRPN(tokens));
 
 	}
 	/**
@@ -27,7 +31,39 @@ public class RTest150 {
 	 * @param tokens
 	 * @return
 	 */
-	public int evalRPN(String[] tokens) {
-		
+	public static int evalRPN(String[] tokens) {
+		int result = 0;
+		if (tokens == null || tokens.length < 3) {
+		    return -1;
+		}
+		int optl = Integer.valueOf(tokens[0]);
+		int optr = Integer.valueOf(tokens[1]);
+		String operator = tokens[2];
+		int i = 2;
+		while (i < tokens.length) {
+		    switch(operator) {
+		        case "+" : result = optl + optr; break;
+		        case "-" : result = optl - optr; break;
+		        case "*" : result = optl * optr; break;
+		        case "/" : result = optl / optr; break;
+		        default : result = -1;
+		    }
+		    if (result == -1) {
+		        return result;
+		    }
+		    if (i == tokens.length -1 ) {
+		        break;
+		    }
+		    if ( i + 2 < tokens.length) {
+		        optl = result;
+		        optr = Integer.valueOf(tokens[i+1]);
+		        operator = tokens[i+2];
+		        i = i + 2;
+		    } else {
+		        result = -1;
+		        break;
+		    }
+		}
+		return result;
 	}
 }

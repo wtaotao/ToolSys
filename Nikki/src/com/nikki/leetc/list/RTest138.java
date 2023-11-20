@@ -26,6 +26,18 @@ public class RTest138 {
 	 * @return
 	 */
     public Node copyRandomList(Node head) {
-        
+        /**
+         * 思路：复制每个底层的节点，同时赋值和复制生成新的指针。
+         */
+        Node newHead;
+        newHead = head;
+        return newHead;
+    }
+    
+    class Node {
+        int val;
+        int random;
+        int index;
+        Node next;
     }
 }

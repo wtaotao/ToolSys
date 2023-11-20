@@ -22,6 +22,8 @@ public class RTest141 {
 	 * @return
 	 */
     public boolean hasCycle(ListNode head) {
-        
+       /**
+        * 思路：通过某个节点，沿着指针搜索，如果能回到本节点，说明有环。  
+        */
     }
 }
