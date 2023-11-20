@@ -1,5 +1,6 @@
 package com.nikki.leetc.hash;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 import com.nikki.out.Print;
@@ -12,7 +13,9 @@ import com.nikki.out.Print;
 public class RTest383 {
 
 	public static void main(String[] args) {
-		String ransomNote = "a", magazine = "b";
+//		String ransomNote = "a", magazine = "b";
+//		String ransomNote = "aa", magazine = "aab";
+		String ransomNote = "fihjjjjei", magazine = "hjibagacbhadfaefdjaeaebgi";
 		Print.stringOut("Can construct?" + canConstruct(ransomNote, magazine));
 	}
 	/**
@@ -37,15 +40,23 @@ public class RTest383 {
 		        return false;
 		    }
 		}
-		HashSet<Character> set = new HashSet<Character>();
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 		//假定无重复字符，否则需修改程序
 		for (int i = 0; i < magazine.length(); i++) {
-		    set.add(magazine.charAt(i));
+			if (map.containsKey(magazine.charAt(i))) {
+				map.put(magazine.charAt(i), map.get(magazine.charAt(i)) + 1);
+			} else {
+				map.put(magazine.charAt(i), 1);
+			}
 		}
 		int i = 0;
 		for (; i < ransomNote.length(); i++) {
-		    if (set.contains(ransomNote.charAt(i))) {
-		        set.remove(ransomNote.charAt(i));
+		    if (map.containsKey(ransomNote.charAt(i))) {
+		    	if (map.get(ransomNote.charAt(i)) > 1) {
+		    		map.put(ransomNote.charAt(i), map.get(ransomNote.charAt(i)) - 1);
+		    	} else {
+		    		map.remove(ransomNote.charAt(i));
+		    	}
 		    } else {
 		        canConstruct = false;
 		        break;

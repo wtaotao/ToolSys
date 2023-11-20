@@ -12,7 +12,8 @@ import com.nikki.out.Print;
 public class RTest205 {
 
 	public static void main(String[] args) {
-		String s = "egg", t = "add";
+//		String s = "egg", t = "add";
+		String s = "badc", t = "baba";
 		Print.stringOut("Is isomorphic?" + isIsomorphic(s, t));
 	}
 	/**
@@ -52,7 +53,12 @@ public class RTest205 {
 		            break;
 		        }
 		    } else {
-		        map.put(c1, t.charAt(i));
+		    	if (map.containsValue(t.charAt(i))) {
+		    		isIsomorphic = false;
+		    		break;
+		    	} else {
+		    		map.put(c1, t.charAt(i));
+		    	}
 		    }
 		}
 		if (i == s.length()) {

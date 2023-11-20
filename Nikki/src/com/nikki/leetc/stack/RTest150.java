@@ -1,5 +1,8 @@
 package com.nikki.leetc.stack;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 import com.nikki.out.Print;
 
 /**
@@ -10,7 +13,9 @@ import com.nikki.out.Print;
 public class RTest150 {
 
 	public static void main(String[] args) {
-		String[] tokens = {"2","1","+","3","*"};
+//		String[] tokens = {"2","1","+","3","*"};
+//		String[] tokens = {"4","13","5","/","+"};
+		String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
 		Print.stringOut("The result is :" + evalRPN(tokens));
 
 	}
@@ -31,7 +36,7 @@ public class RTest150 {
 	 * @param tokens
 	 * @return
 	 */
-	public static int evalRPN(String[] tokens) {
+	public static int evalRPN1(String[] tokens) {
 		int result = 0;
 		if (tokens == null || tokens.length < 3) {
 		    return -1;
@@ -66,4 +71,37 @@ public class RTest150 {
 		}
 		return result;
 	}
+	
+	public static int evalRPN(String[] tokens) {
+        Deque<Integer> stack = new LinkedList<Integer>();
+        int n = tokens.length;
+        for (int i = 0; i < n; i++) {
+            String token = tokens[i];
+            if (isNumber(token)) {
+                stack.push(Integer.parseInt(token));
+            } else {
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                switch (token) {
+                    case "+":
+                        stack.push(num1 + num2);
+                        break;
+                    case "-":
+                        stack.push(num1 - num2);
+                        break;
+                    case "*":
+                        stack.push(num1 * num2);
+                        break;
+                    case "/":
+                        stack.push(num1 / num2);
+                        break;
+                    default:
+                }
+            }
+        }
+        return stack.pop();
+	}
+    private static boolean isNumber(String token) {
+        return !("+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token));
+    }
 }

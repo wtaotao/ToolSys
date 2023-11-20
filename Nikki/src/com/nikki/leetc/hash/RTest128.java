@@ -13,7 +13,9 @@ import com.nikki.out.Print;
 public class RTest128 {
 
 	public static void main(String[] args) {
-		int[] nums = {1, 2, 3, 4};
+//		int[] nums = {1, 2, 3, 4};
+		int[] nums = {100,4,200,1,3,2};
+//		int[] nums = {0,3,7,2,5,8,4,6,0,1};
         Print.stringOut("The longest is:" + longestConsecutive(nums));
 	}
 	/**
@@ -28,15 +30,20 @@ public class RTest128 {
 	public static int longestConsecutive(int[] nums) {
 	    int len = 0;
 	    int[] temp = new int[nums.length];
+	    for (int i = 0; i < temp.length; i++) {
+	    	temp[i] = -1;
+	    }
 	    for (int i = 0; i < nums.length; i++) {
-	        if (nums[i] > 0 && nums[i] <= temp.length) {
-	            temp[nums[i]-1] = nums[i];
-	        }
+	        if (nums[i] >= 0 && nums[i] < temp.length) {
+	            temp[nums[i]] = nums[i];
+	        } 
 	    }
 	    int i = 0;
-	    while (i < temp.length && temp[i] != 0) {
-	        len++;
-	        i++;
+	    while (i < temp.length) {
+	    	if (temp[i] != -1) {
+	    		len++;
+	    	}
+	    	i++;
 	    }
 	    return len;
 	}

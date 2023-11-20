@@ -13,7 +13,8 @@ public class RTest20 {
 
 	public static void main(String[] args) {
 //		String s = "()";
-		String s = "()[]{}";
+//		String s = "()[]{}";
+		String s = "]";
 		Print.stringOut("Is valid?" + isValid(s));
 	}
     /**
@@ -36,7 +37,7 @@ public class RTest20 {
 	        switch (s.charAt(i)) {
 	            case '(' : stack.push(s.charAt(i)); break;
 	            case ')' : {
-	                if (stack.peek() == '(') {
+	                if (!stack.isEmpty() && stack.peek() == '(') {
 	                    stack.pop();
 	                    break;
 	                } else {
@@ -45,7 +46,7 @@ public class RTest20 {
 	            }
 	            case '{' : stack.push(s.charAt(i)); break;
 	            case '}' :  {
-	                if (stack.peek() == '{') {
+	                if (!stack.isEmpty() && stack.peek() == '{') {
 	                    stack.pop();
 	                    break;
 	                } else {
@@ -54,7 +55,7 @@ public class RTest20 {
 	            }
 	            case '[' : stack.push(s.charAt(i)); break;
 	            case ']' :  {
-	                if (stack.peek() == '[') {
+	                if (!stack.isEmpty() && stack.peek() == '[') {
 	                    stack.pop();
 	                    break;
 	                } else {

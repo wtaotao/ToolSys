@@ -12,7 +12,8 @@ import com.nikki.out.Print;
 public class RTest290 {
 
 	public static void main(String[] args) {
-		String pattern = "abba", s = "dog cat cat dog";
+//		String pattern = "abba", s = "dog cat cat dog";
+		String pattern = "abba", s = "dog cat cat fish";
 		Print.stringOut("Is match?" + wordPattern(pattern, s));
 	}
 	/**
@@ -33,7 +34,7 @@ public class RTest290 {
 	        return flag;
 	    }
 	    HashMap<Character, String> map = new HashMap<Character, String>();
-	    int i = 1;
+	    int i = 0;
 	    for (; i < pattern.length(); i++) {
 	        char c = pattern.charAt(i);
 	        if (map.containsKey(c)) {
@@ -42,6 +43,10 @@ public class RTest290 {
 	                return flag;
 	            } 
 	        } else {
+	        	if (map.containsValue(words[i])) {
+	        		flag = false;
+	        		return flag;
+	        	}
 	            map.put(c, words[i]);
 	        }
 	    }

@@ -1,4 +1,8 @@
 package com.nikki.leetc.stack;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 基本计算器
  * @author Jesse
@@ -19,12 +23,37 @@ public class RTest224 {
 	 * @return
 	 */
 	public int calculate(String s) {
-		int result = 0;
-		if (s == null || s.length() < 3) return -1;
-		
-		for (int i = 0; i < s.length(); i++) {
-		    
-		}
-		return result;
-	}
+        Deque<Integer> ops = new LinkedList<Integer>();
+        ops.push(1);
+        int sign = 1;
+
+        int ret = 0;
+        int n = s.length();
+        int i = 0;
+        while (i < n) {
+            if (s.charAt(i) == ' ') {
+                i++;
+            } else if (s.charAt(i) == '+') {
+                sign = ops.peek();
+                i++;
+            } else if (s.charAt(i) == '-') {
+                sign = -ops.peek();
+                i++;
+            } else if (s.charAt(i) == '(') {
+                ops.push(sign);
+                i++;
+            } else if (s.charAt(i) == ')') {
+                ops.pop();
+                i++;
+            } else {
+                long num = 0;
+                while (i < n && Character.isDigit(s.charAt(i))) {
+                    num = num * 10 + s.charAt(i) - '0';
+                    i++;
+                }
+                ret += sign * num;
+            }
+        }
+        return ret;
+    }
 }

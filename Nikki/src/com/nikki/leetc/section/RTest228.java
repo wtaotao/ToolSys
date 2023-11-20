@@ -14,6 +14,7 @@ public class RTest228 {
 
 	public static void main(String[] args) {
 		int[] nums = {0,1,2,4,5,7}; 
+//		int[] nums = {0,2,3,4,6,8,9}; 
 		List<String> list = summaryRanges(nums);
 		for (String s: list) {
 		    Print.stringOut(s);
@@ -35,7 +36,7 @@ public class RTest228 {
 	 * @param nums
 	 * @return
 	 */
-	public static List<String> summaryRanges(int[] nums) {
+	public static List<String> summaryRanges1(int[] nums) {
 		List<String> list = new ArrayList<String>();
 		if (nums == null || nums.length == 0) {
 		    return list;
@@ -57,12 +58,17 @@ public class RTest228 {
 		            sb = new StringBuffer();
 		            prev = nums[i];
 		            sb.append(prev);
-		        } else {
+//		        } else if (sb.length() == 1) {
+//		        	list.add(sb.toString());
+//		        	sb = new StringBuffer();
+//		        	prev = nums[i];
+//		        	sb.append(prev);
+		        }else {
 		            sb.append("->").append(prev);
 		            list.add(sb.toString());
 		            sb = new StringBuffer();
 		            prev = nums[i];
-		            sb.append(prev);
+//		            sb.append(prev);
 		        }
 		        if (i == nums.length-1) {
 		            list.add(sb.toString());
@@ -71,4 +77,24 @@ public class RTest228 {
 		}
 		return list;
 	}
+    public static List<String> summaryRanges(int[] nums) {
+        List<String> ret = new ArrayList<String>();
+        int i = 0;
+        int n = nums.length;
+        while (i < n) {
+            int low = i;
+            i++;
+            while (i < n && nums[i] == nums[i - 1] + 1) {
+                i++;
+            }
+            int high = i - 1;
+            StringBuffer temp = new StringBuffer(Integer.toString(nums[low]));
+            if (low < high) {
+                temp.append("->");
+                temp.append(Integer.toString(nums[high]));
+            }
+            ret.add(temp.toString());
+        }
+        return ret;
+    }
 }
