@@ -25,5 +25,35 @@ public class RTest141 {
        /**
         * 思路：通过某个节点，沿着指针搜索，如果能回到本节点，说明有环。  
         */
+        boolean hasCycle = false;
+        ListNode node = head;
+        
+        return hasCycle;
     }
+    
+    private class ListNode {
+        private int val;
+        private ListNode next;
+        
+        public ListNode(int val, ListNode node) {
+            this.val = val;
+            this.next = node;
+        }
+        
+        public void setVal(int val) {
+            this.val = val;
+        }
+        
+        public int getVal() {
+            return val;
+        }
+        
+        public void setNext(ListNode node) {
+            this.next = node;
+        }
+        
+        public ListNode getNext() {
+            return next;
+        }
+    } 
 }
