@@ -13,16 +13,16 @@ import com.nikki.out.Print;
 public class RTest228 {
 
 	public static void main(String[] args) {
-		int[] nums = {0,1,2,4,5,7}; 
-//		int[] nums = {0,2,3,4,6,8,9}; 
-		List<String> list = summaryRanges(nums);
+//		int[] nums = {0,1,2,4,5,7}; 
+		int[] nums = {0,2,3,4,6,8,9}; 
+		List<String> list = summaryRanges1(nums);
 		for (String s: list) {
 		    Print.stringOut(s);
 		}
 	}
 	/**
-	 * 给定一个  无重复元素 的 有序 整数数组 nums 。
-	 * 返回 恰好覆盖数组中所有数字 的 最小有序 区间范围列表 。也就是说，nums 的每个元素都恰好被某个区间范围所覆盖，并且不存在属于某个范围但不属于 
+	 * 给定一个无重复元素的有序整数数组nums 。
+	 * 返回恰好覆盖数组中所有数字的最小有序区间范围列表 。也就是说，nums的每个元素都恰好被某个区间范围所覆盖，并且不存在属于某个范围但不属于 
 	 * nums 的数字 x 。
 	 * 列表中的每个区间范围 [a,b] 应该按如下格式输出：
 	 * "a->b" ，如果 a != b
@@ -44,35 +44,34 @@ public class RTest228 {
 		StringBuffer sb = new StringBuffer();
 		sb.append(nums[0]);
 		int prev = nums[0];
+		int count = 1;
 		for (int i = 1; i < nums.length; i++) {
 		    if (nums[i] == prev + 1) {
 		        prev++;
+		        count++;
 		        if (i == nums.length-1) {
 		            sb.append("->").append(prev);
 		            list.add(sb.toString());
+		            break;
 		        }
 		    } else {
-		        if (sb.length() == 0) {
-		            sb.append(prev);
+		        if (count == 1) {
 		            list.add(sb.toString());
 		            sb = new StringBuffer();
 		            prev = nums[i];
 		            sb.append(prev);
-//		        } else if (sb.length() == 1) {
-//		        	list.add(sb.toString());
-//		        	sb = new StringBuffer();
-//		        	prev = nums[i];
-//		        	sb.append(prev);
-		        }else {
+		            count = 1;
+		        } else {
 		            sb.append("->").append(prev);
 		            list.add(sb.toString());
 		            sb = new StringBuffer();
 		            prev = nums[i];
-//		            sb.append(prev);
+		            sb.append(prev);
+		            count = 1;
 		        }
-		        if (i == nums.length-1) {
-		            list.add(sb.toString());
-		        }
+		    }
+		    if (i == nums.length-1) {
+		        list.add(sb.toString());
 		    }
 		}
 		return list;

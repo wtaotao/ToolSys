@@ -71,7 +71,15 @@ public class RTest150 {
 		}
 		return result;
 	}
-	
+	/**
+	 * 
+	 * <pre>
+	 * 遇到运算符则从栈中弹出两个操作数，先右再左
+	 * </pre>
+	 *
+	 * @param tokens
+	 * @return
+	 */
 	public static int evalRPN(String[] tokens) {
         Deque<Integer> stack = new LinkedList<Integer>();
         int n = tokens.length;

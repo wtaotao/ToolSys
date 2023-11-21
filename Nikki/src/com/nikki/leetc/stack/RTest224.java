@@ -3,6 +3,8 @@ package com.nikki.leetc.stack;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import com.nikki.out.Print;
+
 /**
  * 基本计算器
  * @author Jesse
@@ -11,8 +13,8 @@ import java.util.LinkedList;
 public class RTest224 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String s = "1 + 1";
+		Print.stringOut("The sum is : " + calculate(s));
 	}
 	/**
 	 * 给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。
@@ -22,7 +24,7 @@ public class RTest224 {
 	 * @param s
 	 * @return
 	 */
-	public int calculate(String s) {
+	public static int calculate(String s) {
         Deque<Integer> ops = new LinkedList<Integer>();
         ops.push(1);
         int sign = 1;
