@@ -10,7 +10,7 @@ import com.nikki.out.Print;
 public class RTest202 {
 
 	public static void main(String[] args) {
-		int n = 19;
+		int n = 8;
 		Print.stringOut("Is happy?" + isHappy(n));
 	}
 	/**
@@ -30,7 +30,7 @@ public class RTest202 {
 	 * @param n
 	 * @return
 	 */
-	public static boolean isHappy(int n) {
+	public static boolean isHappy1(int n) {
 		boolean isHappy = false;
 		//到什么时候循环结束？暂时假定以10次
 		int count = 10;
@@ -46,4 +46,24 @@ public class RTest202 {
 		if (n == 1) isHappy = true;
 		return isHappy;
 	}
+	
+	public static boolean isHappy(int n) {
+        int slow = n, fast = n;
+        do{
+            slow = bitSquareSum(slow);
+            fast = bitSquareSum(fast);
+            fast = bitSquareSum(fast);
+        }while(slow != fast);
+        return slow == 1;
+	}
+	private static int bitSquareSum(int n) {
+        int sum = 0;
+        while(n > 0)
+        {
+            int bit = n % 10;
+            sum += bit * bit;
+            n = n / 10;
+        }
+        return sum;
+    }
 }
