@@ -23,7 +23,7 @@ public class RTest3 {
 	 * @param s
 	 * @return
 	 */
-	public static int lengthOfLongestSubstring(String s) {
+	public static int lengthOfLongestSubstring1(String s) {
 	    if (s == null || s.length() == 0) return 0;
 		int len = 0, subMax = 0;
 		HashMap<Character, Integer> cmap = new HashMap<Character, Integer>();
@@ -43,4 +43,19 @@ public class RTest3 {
 		}
 		return len;
 	}
+    public static int lengthOfLongestSubstring(String s) {
+        if (s.length()==0) return 0;
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        int max = 0;
+        int left = 0;
+        for(int i = 0; i < s.length(); i ++){
+            if(map.containsKey(s.charAt(i))){
+                left = Math.max(left,map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i),i);
+            max = Math.max(max,i-left+1);
+        }
+        return max;
+        
+    }
 }

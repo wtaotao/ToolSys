@@ -1,4 +1,4 @@
-package com.nikki.leetc.palindrome;
+package com.nikki.leetc.doublepointer;
 
 import com.nikki.out.Print;
 

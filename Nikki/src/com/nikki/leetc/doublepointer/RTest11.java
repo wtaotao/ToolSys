@@ -1,4 +1,4 @@
-package com.nikki.leetc.palindrome;
+package com.nikki.leetc.doublepointer;
 
 import com.nikki.out.Print;
 
@@ -25,7 +25,7 @@ public class RTest11 {
 	 * @param height
 	 * @return
 	 */
-	public static int maxArea(int[] height) {
+	public static int maxArea1(int[] height) {
 	    /**
 	     * 思路：遍历每个height，找到离它距离最远的那个不小于它的height的距离；如果都比它小，则记为0；最后输出最大水量
 	     */
@@ -48,4 +48,13 @@ public class RTest11 {
 		
 	    return max;
 	}
+    public int maxArea(int[] height) {
+        int i = 0, j = height.length - 1, res = 0;
+        while(i < j) {
+            res = height[i] < height[j] ? 
+                Math.max(res, (j - i) * height[i++]): 
+                Math.max(res, (j - i) * height[j--]); 
+        }
+        return res;
+    }
 }

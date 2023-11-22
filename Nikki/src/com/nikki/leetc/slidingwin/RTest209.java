@@ -25,7 +25,7 @@ public class RTest209 {
 	 * @param nums
 	 * @return
 	 */
-	public static int minSubArrayLen(int target, int[] nums) {
+	public static int minSubArrayLen1(int target, int[] nums) {
 	    int len = 0, sum = 0, max = 0, start = 0, end = 0;
 	    
 		for (int i=0; i<nums.length; i++) {
@@ -57,4 +57,23 @@ public class RTest209 {
 		
 	    return len;
 	}
+    public int minSubArrayLen(int s, int[] nums) {
+        int n = nums.length;
+        if (n == 0) {
+            return 0;
+        }
+        int ans = Integer.MAX_VALUE;
+        int start = 0, end = 0;
+        int sum = 0;
+        while (end < n) {
+            sum += nums[end];
+            while (sum >= s) {
+                ans = Math.min(ans, end - start + 1);
+                sum -= nums[start];
+                start++;
+            }
+            end++;
+        }
+        return ans == Integer.MAX_VALUE ? 0 : ans;
+    }
 }
