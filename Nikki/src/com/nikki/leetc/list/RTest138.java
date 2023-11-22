@@ -19,22 +19,46 @@ public class RTest138 {
 	 * 用一个由 n 个节点组成的链表来表示输入/输出中的链表。每个节点用一个 [val, random_index] 表示：
 	 * val：一个表示 Node.val 的整数。
 	 * random_index：随机指针指向的节点索引（范围从 0 到 n-1）；如果不指向任何节点，则为  null 。
-	 * 你的代码 只 接受原链表的头节点 head 作为传入参数。
+	 * 你的代码 只接受原链表的头节点 head 作为传入参数。
 	 * 输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 	 * 输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
 	 * @param head
 	 * @return
 	 */
-    public Node copyRandomList(Node head) {
+    public Node copyRandomList(Node head, int[] random_indexs) {
         /**
          * 思路：复制每个底层的节点，同时赋值和复制生成新的指针。
          */
-        Node newHead;
-        newHead = head;
+        Node newHead = copyList(head);
+        if (head == null) {
+           return null; 
+        }
+        Node[] nodes = null;
+        int i = 0;
+        Node temp = newHead;
+        while (temp != null) {
+            nodes[i++] = temp;
+            temp = temp.next;
+        }
+        i = 0;
+        while (i < random_indexs.length) {
+            if (random_indexs[i] != -1) {
+                nodes[i].random = nodes[random_indexs[i]];
+            }
+            i++;
+        }
         return newHead;
     }
     
-    /*
+    private Node copyList(Node head) {
+        Node newHead = null;
+        if (head != null) {
+            newHead = new Node(head.val);
+            newHead.next = copyList(head.next);
+        }
+        return newHead;        
+    }
+    
  // Definition for a Node.
  class Node {
      int val;
@@ -47,5 +71,4 @@ public class RTest138 {
          this.random = null;
      }
  }
- */
 }

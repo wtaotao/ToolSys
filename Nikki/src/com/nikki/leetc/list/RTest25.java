@@ -1,4 +1,7 @@
 package com.nikki.leetc.list;
+
+import com.nikki.out.Print;
+
 /**
  *  K 个一组翻转链表
  * @author Jesse
@@ -7,8 +10,23 @@ package com.nikki.leetc.list;
 public class RTest25 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+        RTest25 test = new RTest25();
+        int[] l = {1,2,3,4,5};
+        ListNode next = null;
+        for (int i = l.length-1; i >= 0; i--) {
+            ListNode node = test.new ListNode(l[i]);
+            if (i == l.length-1) {
+                node.next = null;
+            } else {
+                node.next = next;
+            }
+            next = node;
+        }
+        ListNode list = test.reverseKGroup(next, 2);
+        while (list != null) {
+            Print.stringOut("The vol is:" + list.val);
+            list = list.next;
+        }
 	}
 	/**
 	 * 给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
@@ -21,16 +39,42 @@ public class RTest25 {
 	 * @return
 	 */
     public ListNode reverseKGroup(ListNode head, int k) {
-
+        ListNode p = head;
+        ListNode[] list = new ListNode[k];
+        int i = 0;
+        boolean isFirst = true;
+        ListNode prev = null;
+        while (p != null) {
+            list[i++] = p;
+            p = p.next;
+            if (i == k) {
+                prev.next = list[0];
+                reverse(list);
+                if (isFirst) {
+                    head = list[k-1];
+                    isFirst = false;
+                }
+                prev = list[0];
+                i = 0;
+            } 
+            prev.next = p;
+        }
+        return head;
+    }
+    
+    private void reverse(ListNode[] list) {
+        for (int i = 1; i < list.length; i++) {
+            list[i].next = list[i-1];
+        }
     }
     /**
      * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode() {}
-     *     ListNode(int val) { this.val = val; }
-     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
-     */
+     **/
+     public class ListNode {
+         int val;
+         ListNode next;
+         ListNode() {}
+         ListNode(int val) { this.val = val; }
+         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     }
 }
