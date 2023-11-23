@@ -80,7 +80,7 @@ public class RTest36 {
 		}
 	    return isValid;
 	}
-    public boolean isValidSudoku(char[][] board) {
+    public static boolean isValidSudoku(char[][] board) {
         //定义数字行内出现的次数
         int[][] row = new int[9][9];
         //定义数字列内出现的次数

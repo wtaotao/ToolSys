@@ -66,7 +66,7 @@ public class RTest76 {
 	    } 
 		return subbuf.toString();
 	}
-	  public String minWindow(String s, String t) {
+	  public static String minWindow(String s, String t) {
 	        Map<Character, Integer> need = new HashMap<Character, Integer>();
 	        Map<Character, Integer> window = new HashMap<Character, Integer>();
 	        for (int i = 0; i < t.length(); i++) {

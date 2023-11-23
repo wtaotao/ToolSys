@@ -3,6 +3,7 @@ package com.nikki.leetc.list;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nikki.leetc.list.RTest21.ListNode;
 import com.nikki.out.Print;
 
 /**
@@ -51,14 +52,47 @@ public class RTest2 {
         if (carry == 1) list.add(1);
         return list;
     }
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    	ListNode h = null, l = null;
+    	int carry = 0;
+    	do {
+    		int sum = l1.val + l2.val + carry;
+    		carry = sum/10;
+    		if (l == null) {
+    			l = new ListNode(sum%10);
+    			h = l;
+    		} else {
+    			l.next = new ListNode(sum%10);
+    			l = l.next;
+    		}
+    		l1 = l1.next;
+    		l2 = l2.next;
+    	} while (l1 != null && l2 != null);
+    	do {
+    		int sum = l1.val + carry;
+    		carry = sum/10;
+    		if (l == null) {
+    			l = new ListNode(sum%10);
+    			h = l;
+    		} else {
+    			l.next = new ListNode(sum%10);
+    			l = l.next;
+    		}
+    		l1 = l1.next;
+    		
+    	} while (l1 != null);
+    	if (carry == 1) 
+    		l = new ListNode(1);
+    	return h;
+    }
     /**
      * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode() {}
-     *     ListNode(int val) { this.val = val; }
-     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
-     */
+     **/
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
 }

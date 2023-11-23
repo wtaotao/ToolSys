@@ -57,7 +57,7 @@ public class RTest209 {
 		
 	    return len;
 	}
-    public int minSubArrayLen(int s, int[] nums) {
+    public static int minSubArrayLen(int s, int[] nums) {
         int n = nums.length;
         if (n == 0) {
             return 0;
