@@ -48,7 +48,7 @@ public class RTest11 {
 		
 	    return max;
 	}
-    public int maxArea(int[] height) {
+    public static int maxArea(int[] height) {
         int i = 0, j = height.length - 1, res = 0;
         while(i < j) {
             res = height[i] < height[j] ? 

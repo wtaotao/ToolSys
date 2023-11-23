@@ -31,7 +31,6 @@ struct Node {
     public Node connect(Node root) {
         
     }
-    /*
  // Definition for a Node.
  class Node {
      public int val;
@@ -52,5 +51,4 @@ struct Node {
          next = _next;
      }
  };
- */   
 }
