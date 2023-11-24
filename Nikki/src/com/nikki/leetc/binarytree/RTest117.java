@@ -1,4 +1,8 @@
 package com.nikki.leetc.binarytree;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 填充每个节点的下一个右侧节点指针II
  *@author:Jesse
@@ -7,18 +11,51 @@ package com.nikki.leetc.binarytree;
 public class RTest117 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		RTest117 test = new RTest117();
+        Integer[] root = {1,2,3,4,5,null,7};
+        Node tree = test.constructTree(root);
 
 	}
+    private Node constructTree(Integer[] root) {
+        Node tree = null;
+        if (root == null || root[0] == null) return tree;
+        //这个还不能用单纯的栈呢，得用双端队列
+        Deque<Node> stack = new ArrayDeque<>(); 
+        tree = new Node(root[0]);
+        Node temp = tree;
+//        stack.addFirst(tree);
+        int count = 0;
+        for (int i = 1; i < root.length; i++) {
+            if (count == 2) {
+                temp = stack.pollFirst();
+                count = 0;
+            }
+            if (root[i] != null) {
+                Node node = new Node(root[i]);
+                if (count == 0) {
+                    temp.left = node;
+                    count++;
+                } else if (count == 1) {
+                    temp.right = node;
+                    count++;
+                }
+                stack.addLast(node);
+            } else {
+                count++;
+            }
+        }
+        
+        return tree;
+    }
 	/**
 	 * 给定一个二叉树：
 
-struct Node {
-  int val;
-  Node *left;
-  Node *right;
-  Node *next;
-}
+     struct Node {
+       int val;
+       Node *left;
+       Node *right;
+       Node *next;
+     }
      * 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL 。
      * 初始状态下，所有 next 指针都被设置为 NULL 。
      * 输入：root = [1,2,3,4,5,null,7]
@@ -30,6 +67,7 @@ struct Node {
 	 */
     public Node connect(Node root) {
         
+        return root;
     }
  // Definition for a Node.
  class Node {

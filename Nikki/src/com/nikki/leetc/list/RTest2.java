@@ -3,7 +3,6 @@ package com.nikki.leetc.list;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nikki.leetc.list.RTest21.ListNode;
 import com.nikki.out.Print;
 
 /**
@@ -14,19 +13,36 @@ import com.nikki.out.Print;
 public class RTest2 {
 
 	public static void main(String[] args) {
-		List<Integer> l1 = new ArrayList<Integer>();
-		l1.add(2);
-		l1.add(4);
-		l1.add(3);
-		List<Integer> l2 = new ArrayList<Integer>();
-		l2.add(5);
-		l2.add(6);
-		l2.add(4);
-		List l = addTwoNumbers(l1, l2);
-		for (Object val: l) {
-		    Print.stringOut("" + val);
-		}
-
+//		List<Integer> l1 = new ArrayList<Integer>();
+//		l1.add(2);
+//		l1.add(4);
+//		l1.add(3);
+//		List<Integer> l2 = new ArrayList<Integer>();
+//		l2.add(5);
+//		l2.add(6);
+//		l2.add(4);
+//		List l = addTwoNumbers(l1, l2);
+//		for (Object val: l) {
+//		    Print.stringOut("" + val);
+//		}
+	    RTest2 test = new RTest2();
+	    ListNode l1 = test.new ListNode(2);
+	    ListNode h1 = l1;
+	    l1.next = test.new ListNode(4);
+	    l1 = l1.next;
+	    l1.next = test.new ListNode(3);
+	    l1 = l1.next;
+	    l1.next = test.new ListNode(8);
+	    ListNode l2 = test.new ListNode(5);
+	    ListNode h2 = l2;
+	    l2.next = test.new ListNode(6);
+	    l2 = l2.next;
+	    l2.next = test.new ListNode(6);
+	    ListNode l = test.addTwoNumbers(h1, h2);
+	    while (l != null) {
+	        Print.stringOut("" + l.val);
+	        l = l.next;
+	    }
 	}
 	/**
 	 * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
@@ -53,6 +69,14 @@ public class RTest2 {
         return list;
     }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        //如有有一个列表为空，则直接返回另一个列表
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        //从个位开始计算，进位加到下一高位
     	ListNode h = null, l = null;
     	int carry = 0;
     	do {
@@ -68,21 +92,25 @@ public class RTest2 {
     		l1 = l1.next;
     		l2 = l2.next;
     	} while (l1 != null && l2 != null);
-    	do {
+    	//l1比l2长，高位直接跟进位运算
+    	while (l1 != null) {
     		int sum = l1.val + carry;
     		carry = sum/10;
-    		if (l == null) {
-    			l = new ListNode(sum%10);
-    			h = l;
-    		} else {
-    			l.next = new ListNode(sum%10);
-    			l = l.next;
-    		}
+    		l.next = new ListNode(sum%10);
+    		l = l.next;
     		l1 = l1.next;
     		
-    	} while (l1 != null);
+    	};
+    	//l2比l1长，高位直接跟进位运算
+    	while (l2 != null) {
+    	    int sum = l2.val + carry;
+    	    carry = sum/10;
+    	    l.next = new ListNode(sum%10);
+    	    l = l.next;
+    	    l2 = l2.next;
+    	}
     	if (carry == 1) 
-    		l = new ListNode(1);
+    		l.next = new ListNode(1);
     	return h;
     }
     /**

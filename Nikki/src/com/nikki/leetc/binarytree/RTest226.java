@@ -1,7 +1,5 @@
 package com.nikki.leetc.binarytree;
 
-import com.nikki.leetc.binarytree.RTest104.TreeNode;
-
 /**
  * 翻转二叉树
  *@author:Jesse

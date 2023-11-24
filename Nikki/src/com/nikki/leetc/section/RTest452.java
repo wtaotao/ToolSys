@@ -28,21 +28,21 @@ public class RTest452 {
 	 * @return
 	 */
 	public int findMinArrowShots(int[][] points) {
-        // 贪心
+        //贪心
         int n = points.length;
         if(n == 0) return 0;
 
         Arrays.sort(points, (a, b) -> Long.compare(a[1], b[1]));
         int result = 1;
-        // 第一支箭直接射出
+        //第一支箭直接射出
         int arrow = points[0][1];  
         for(int i = 1; i < n; i++){
             if(points[i][0] <= arrow){
-                // 该区间能被当前箭right穿过
+                //该区间能被当前箭right穿过
                 continue;
             }
-            arrow = points[i][1]; // 继续射出箭
-            result++; // 箭数加1
+            arrow = points[i][1]; //继续射出箭
+            result++; //箭数加1
         }
         return result;
 	}
