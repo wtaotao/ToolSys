@@ -1,4 +1,8 @@
 package com.nikki.leetc.map;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 克隆图
  *@author:Jesse
@@ -9,6 +13,20 @@ public class RTest133 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	private Node[] constructMap (int[][] nums) {
+	    int len = nums.length;
+	    Node[] nodes = new Node[len];
+	    for (int i = 0; i < len; i++) {
+	        nodes[i].val = i+1;
+	        List<Node> neighbors = new ArrayList<Node>();
+	        for (int j = 0; j < nums[i].length; j++) {
+	            neighbors.add(nodes[nums[i][j]]);
+	        }
+	        nodes[i].neighbors = neighbors;
+	    }
+	    return nodes;
 	}
 	/**
 	 * 给你无向 连通 图中一个节点的引用，请你返回该图的 深拷贝（克隆）。
@@ -34,8 +52,9 @@ public class RTest133 {
 	 */
     public Node cloneGraph(Node node) {
         
+        return node;
     }
-    /*
+
  // Definition for a Node.
  class Node {
      public int val;
@@ -53,5 +72,4 @@ public class RTest133 {
          neighbors = _neighbors;
      }
  }
- */
 }

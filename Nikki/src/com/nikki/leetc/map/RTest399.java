@@ -1,4 +1,9 @@
 package com.nikki.leetc.map;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 除法求值
  *@author:Jesse
@@ -20,10 +25,10 @@ public class RTest399 {
 	 * 输入：equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
 	 * 输出：[6.00000,0.50000,-1.00000,1.00000,-1.00000]
 	 * 解释：
-条件：a / b = 2.0, b / c = 3.0
-问题：a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ?
-结果：[6.0, 0.5, -1.0, 1.0, -1.0 ]
-注意：x 是未定义的 => -1.0
+     * 条件：a / b = 2.0, b / c = 3.0
+     * 问题：a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ?
+     * 结果：[6.0, 0.5, -1.0, 1.0, -1.0 ]
+     * 注意：x 是未定义的 => -1.0
 	 * 
 	 * @param equations
 	 * @param values
@@ -31,6 +36,35 @@ public class RTest399 {
 	 * @return
 	 */
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-
+        if (queries == null || queries.size() == 0 || equations.size() != values.length) {
+            return null;
+        }
+        Map<String, Double> equa2val = new HashMap<String, Double>();
+        StringBuffer fullStrSb = new StringBuffer();
+        for (int i = 0; i < equations.size(); i++) {
+            StringBuffer sb = new StringBuffer();
+            for (String s: equations.get(i)) {
+                sb.append(s);
+                fullStrSb.append(s);
+            }
+            equa2val.put(sb.toString(), values[i]);
+        }
+        double[] result = new double[queries.size()];
+        for (int i = 0; i < queries.size(); i++) {
+            boolean isFind = true;
+            List<String> list =  queries.get(i);
+            for (String s: list) {
+                if (fullStrSb.indexOf(s) == -1) {
+                    isFind = false;
+                }
+            }
+            if (!isFind || list.size() != 2) {
+                result[i] = -1;
+                continue;
+            }
+            //存在则根据规则计算
+            
+        }
+        return result;
     }
 }

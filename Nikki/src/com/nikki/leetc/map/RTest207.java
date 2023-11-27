@@ -24,6 +24,42 @@ public class RTest207 {
 	 * @return
 	 */
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-
+        //思路：根据依赖可以构建一条链表，如果链表有环，则不可能完成所有课程的学习
+        boolean canFinished = false;
+        Node[] nodes = new Node[numCourses];
+        Node head = null;
+        for (int i = numCourses-1; i >= 0; i++) {
+            Node node = new Node(i);
+            nodes[i] = node;
+            if (head == null) {
+                head = node;
+                node.next = null;
+            } else {
+                node.next = head;
+                head = node;
+            }
+        }
+        for (int i = 0; i < prerequisites.length; i++) {
+            if (prerequisites[i].length == 2) {
+                //三种情况（假设没有两条一样的连线）：1.连线数大于等于节点数肯定有环（不一定，可以被多个点依赖和孤立点）；2.所有节点next都不为空则有环；
+                //3.连线不多于点数减一则需check
+                
+            }
+        }
+        return canFinished;
+    }
+    
+    class Node {
+        int val;
+        Node next;
+        public Node () {
+        }
+        public Node (int val) {
+            this.val = val;
+        }
+        public Node (int val, Node next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }

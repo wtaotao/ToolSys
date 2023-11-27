@@ -1,4 +1,7 @@
 package com.nikki.leetc.map.scopesearch;
+
+import java.util.List;
+
 /**
  * 单词接龙
  *@author:Jesse
@@ -22,6 +25,7 @@ public class RTest127 {
 	 * 
 	 */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-
+        
+        return 0;
     }
 }
