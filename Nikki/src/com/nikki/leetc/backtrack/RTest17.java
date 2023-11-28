@@ -3,6 +3,9 @@ package com.nikki.leetc.backtrack;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import com.nikki.out.Print;
+
 import java.util.HashMap;
 
 /**
@@ -13,18 +16,21 @@ import java.util.HashMap;
 public class RTest17 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String digits = "23";
+		List<String> strs = letterCombinations(digits);
+		for (String str: strs) {
+		    Print.stringOut(str);
+		}
 	}
 	/**
-	 * 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。
+	 * 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按任意顺序返回。
 	 * 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
 	 * 输入：digits = "23"
 	 * 输出：["ad","ae","af","bd","be","bf","cd","ce","cf"]
 	 * @param digits
 	 * @return
 	 */
-    public List<String> letterCombinations(String digits) {
+    public static List<String> letterCombinations(String digits) {
         List<String> combinations = new ArrayList<String>();
         if (digits.length() == 0) {
             return combinations;
@@ -43,11 +49,13 @@ public class RTest17 {
         return combinations;
     }
 
-    public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
+    public static void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
         if (index == digits.length()) {
             combinations.add(combination.toString());
         } else {
+            //获取字符串的单个字符
             char digit = digits.charAt(index);
+            //查询单个字符对应的可能字符串
             String letters = phoneMap.get(digit);
             int lettersCount = letters.length();
             for (int i = 0; i < lettersCount; i++) {

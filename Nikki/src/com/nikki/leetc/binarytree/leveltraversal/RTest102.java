@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
+import com.nikki.out.Print;
+
 /**
  * 二叉树的层序遍历
  *@author:Jesse
@@ -13,8 +15,12 @@ import java.util.Queue;
 public class RTest102 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	    RTest102 test = new RTest102();
+		Integer[] root = {3,9,20,null,null,15,7};
+		TreeNode tree = TreeNode.constructTree(root);
 
+		List<List<Integer>> lists = test.levelOrder(tree);
+		Print.printLists(lists);
 	}
 	/**
 	 * 给你二叉树的根节点 root ，返回其节点值的层序遍历 。 （即逐层地，从左到右访问所有节点）。
@@ -48,19 +54,4 @@ public class RTest102 {
 
         return res;
     }
-    /**
-     * Definition for a binary tree node.
-     **/
-     public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode() {}
-         TreeNode(int val) { this.val = val; }
-         TreeNode(int val, TreeNode left, TreeNode right) {
-        	    this.val = val;
-        	    this.left = left;
-        	    this.right = right;
-        	    }
-     }
 }
