@@ -3,6 +3,8 @@ package com.nikki.leetc.binarytree.leveltraversal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nikki.leetc.TreeNode;
+
 /**
  * 二叉树的层平均值
  *@author:Jesse

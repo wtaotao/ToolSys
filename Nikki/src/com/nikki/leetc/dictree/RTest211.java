@@ -14,10 +14,10 @@ public class RTest211 {
 	 * 请你设计一个数据结构，支持 添加新单词 和 查找字符串是否与任何先前添加的字符串匹配 。
 	 * 实现词典类 WordDictionary ：
 	 * 输入：
-["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
-[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
+     * ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
+     * [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
      * 输出：
-[null,null,null,null,false,true,true,true]
+     * [null,null,null,null,false,true,true,true]
      * 1 <= word.length <= 25
      * addWord 中的 word 由小写英文字母组成
      * search 中的 word 由 '.' 或小写英文字母组成

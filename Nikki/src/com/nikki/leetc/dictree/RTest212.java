@@ -1,4 +1,8 @@
 package com.nikki.leetc.dictree;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 单词搜索 II
  *@author:Jesse
@@ -12,7 +16,7 @@ public class RTest212 {
 	}
 	/**
 	 * 给定一个 m x n 二维字符网格 board 和一个单词（字符串）列表 words， 返回所有二维网格上的单词 。
-	 * 单词必须按照字母顺序，通过 相邻的单元格 内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母在一个单词中不允许被重复使用。
+	 * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母在一个单词中不允许被重复使用。
 	 * 输入：board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
 	 * 输出：["eat","oath"]
 	 * 
@@ -21,6 +25,22 @@ public class RTest212 {
 	 * @return
 	 */
     public List<String> findWords(char[][] board, String[] words) {
+        List<String> resList = new ArrayList<String>();
+        //从网格中找第一个字符，然后逐个循环找下一个
         
+        return resList;
+    }
+    
+    private int isAroundExist (char[][] board, char c, int row, int col) {
+        int isExist = 0;
+        //上
+        if (row-1 >= 0 && board[row-1][col] == c) isExist = 1;
+        //下
+        if (row+1 <= board.length-1 && board[row+1][col] == c) isExist = 2;
+        //左
+        if (col-1 >= 0 && board[row][col-1] == c) isExist = 3;
+        //右
+        if (col+1 <= board[0].length-1 && board[row][col+1] == c) isExist = 4;
+        return isExist;
     }
 }

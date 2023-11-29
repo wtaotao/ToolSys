@@ -2,6 +2,8 @@ package com.nikki.leetc.binarytree.leveltraversal;
 
 import java.util.List;
 
+import com.nikki.leetc.TreeNode;
+
 /**
  * 二叉树的右视图
  *@author:Jesse

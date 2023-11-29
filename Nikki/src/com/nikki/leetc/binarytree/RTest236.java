@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-import com.nikki.leetc.binarytree.RTest129.TreeNode;
-
+import com.nikki.leetc.TreeNode;
 
 /**
  * 二叉树的最近公共祖先
@@ -100,13 +99,4 @@ public class RTest236 {
         if (list.size() == 0) list.add("" + root.val);
         return list;
     }
-    /**
-     * Definition for a binary tree node.
-     **/
-     public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode(int x) { val = x; }
-     }
 }

@@ -1,6 +1,6 @@
 package com.nikki.leetc.binarytree;
 
-import com.nikki.leetc.binarytree.RTest101.TreeNode;
+import com.nikki.leetc.TreeNode;
 import com.nikki.out.Print;
 
 /**
@@ -14,12 +14,12 @@ public class RTest114 {
 		int[] nums = {1,2,5,3,4,-1,6};
 		RTest114 test = new RTest114();
 		
-	      TreeNode p21 = test.new TreeNode(3);
-	      TreeNode p22 = test.new TreeNode(4);
-	      TreeNode p24 = test.new TreeNode(6);
-	      TreeNode p11 = test.new TreeNode(2, p21, p22);
-	      TreeNode p12 = test.new TreeNode(5, null, p24);
-	      TreeNode p0 = test.new TreeNode(1, p11, p12);
+	      TreeNode p21 = new TreeNode(3);
+	      TreeNode p22 = new TreeNode(4);
+	      TreeNode p24 = new TreeNode(6);
+	      TreeNode p11 = new TreeNode(2, p21, p22);
+	      TreeNode p12 = new TreeNode(5, null, p24);
+	      TreeNode p0 = new TreeNode(1, p11, p12);
 	      
 	      flatten(p0);
 	      
@@ -44,20 +44,5 @@ public class RTest114 {
                 flatten(root.right);
             }
         }
-    }
-    /**
-     * Definition for a binary tree node.
-     **/
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-            }
     }
 }

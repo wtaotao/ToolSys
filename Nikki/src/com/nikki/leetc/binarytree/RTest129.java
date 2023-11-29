@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+import com.nikki.leetc.TreeNode;
 import com.nikki.out.Print;
 
 /**
@@ -91,21 +92,4 @@ public class RTest129 {
         if (list.size() == 0) list.add("" + root.val);
         return list;
     }
-    /**
-     * Definition for a binary tree node.
-     * */
-    public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode() {}
-         public TreeNode(int val) { 
-             this.val = val; 
-         }
-         TreeNode(int val, TreeNode left, TreeNode right) {
-         this.val = val;
-         this.left = left;
-         this.right = right;
-           }
-     }
 }

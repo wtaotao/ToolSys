@@ -1,4 +1,7 @@
 package com.nikki.leetc.binarytree;
+
+import com.nikki.leetc.TreeNode;
+
 /**
  * 从中序与后序遍历序列构造二叉树
  *@author:Jesse
@@ -21,19 +24,4 @@ public class RTest106 {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
 
     }
-    /**
-     * Definition for a binary tree node.
-     **/
-     public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode() {}
-         TreeNode(int val) { this.val = val; }
-         TreeNode(int val, TreeNode left, TreeNode right) {
-             this.val = val;
-             this.left = left;
-             this.right = right;
-             }
-     }
 }
