@@ -18,7 +18,7 @@ public class RTest61 {
 		int k = 3;
         ListNode next = null;
         for (int i = nums.length-1; i >= 0; i--) {
-            ListNode node = test.new ListNode(nums[i]);
+            ListNode node = new ListNode(nums[i]);
             node.next = next;
             next = node;
         }
@@ -56,14 +56,4 @@ public class RTest61 {
         
         return head;
     }
-    /**
-     * Definition for singly-linked list.
-     **/
-     public class ListNode {
-         int val;
-         ListNode next;
-         ListNode() {}
-         ListNode(int val) { this.val = val; }
-         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     }
 }

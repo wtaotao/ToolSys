@@ -11,7 +11,7 @@ import com.nikki.out.Print;
  * 加油站
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename RTest134.java
  * @version v0.1 2023年11月8日
  * @time 下午3:10:18 
@@ -20,9 +20,6 @@ import com.nikki.out.Print;
 public class RTest134 {
 
     /**
-     * <pre>
-     *
-     * </pre>
      *
      * @param args
      */
@@ -41,10 +38,9 @@ public class RTest134 {
     /**
      * 
      * <pre>
-     * 在一条环路上有 n 个加油站，其中第 i 个加油站有汽油 gas[i] 升。
-     * 你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。
-     * 给定两个整数数组 gas 和 cost ，如果你可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 。如果存在解，则保证它是唯一的。
-     * 
+     * 在一条环路上有n个加油站，其中第i个加油站有汽油gas[i]升。
+     * 你有一辆油箱容量无限的的汽车，从第i个加油站开往第i+1个加油站需要消耗汽油cost[i]升。你从其中的一个加油站出发，开始时油箱为空。
+     * 给定两个整数数组gas和cost，如果你可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回-1。如果存在解，则保证它是唯一的。
      * </pre>
      *
      * @param gas
@@ -86,6 +82,7 @@ public class RTest134 {
         while (i < n) {
             int sumOfGas = 0, sumOfCost = 0;
             int cnt = 0;
+            //当前位置开始，往前走一圈，除非耗油大于储油则中止
             while (cnt < n) {
                 int j = (i + cnt) % n;
                 sumOfGas += gas[j];
@@ -95,9 +92,11 @@ public class RTest134 {
                 }
                 cnt++;
             }
+            //表明已向前走一周，找到解
             if (cnt == n) {
                 return i;
             } else {
+                //从上次耗油大于储油的点开始
                 i = i + cnt + 1;
             }
         }

@@ -11,7 +11,7 @@ import com.nikki.out.Print;
  * 整数转罗马数字
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename RTest12.java
  * @version v0.1 2023年11月10日
  * @time 上午9:59:05 
@@ -20,9 +20,6 @@ import com.nikki.out.Print;
 public class RTest12 {
 
     /**
-     * <pre>
-     *
-     * </pre>
      *
      * @param args
      */
@@ -46,12 +43,12 @@ public class RTest12 {
      * C             100
      * D             500
      * M             1000
-     * 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。
-     * 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。
-     * 同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：
-     * I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。
-     * X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。
-     * C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
+     * 例如，罗马数字2写做II，即为两个并列的1。12写做XII，即为X+II。27写做XXVII,即为XX+V+II。
+     * 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如4不写做IIII，而是IV。数字1在数字5的左边，所表示的数等于大数5减小数1得到的数值4。
+     * 同样地，数字9表示为IX。这个特殊的规则只适用于以下六种情况：
+     * I可以放在V(5)和X(10)的左边，来表示4和9。
+     * X可以放在L(50)和C(100)的左边，来表示40和90。
+     * C可以放在D(500)和M(1000)的左边，来表示400和900。
      * 
      * 1 <= num <= 3999
      * </pre>
@@ -62,13 +59,17 @@ public class RTest12 {
     public static String intToRoman(int num) {
         StringBuffer romanBuf = new StringBuffer(); 
         int kilo = num/1000;
+        //千位转换
         for (int i=1; i<=kilo; i++) {
             romanBuf.append(transToRoman(1000));
         }
+        //百位转换
         int handreds = (num%1000)/100;
         romanBuf.append(transToRoman(handreds*100));
+        //十位转换
         int tens = (num%100)/10;
         romanBuf.append(transToRoman(tens*10));
+        //个位转换
         int unit = num%10;
         romanBuf.append(transToRoman(unit));
         return romanBuf.toString();

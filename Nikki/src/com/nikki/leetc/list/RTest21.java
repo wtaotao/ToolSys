@@ -15,7 +15,7 @@ public class RTest21 {
 		int[] l2 = {1,3,4};
 		ListNode next = null;
 		for (int i = l1.length-1; i >= 0; i--) {
-		    ListNode node = test.new ListNode(l1[i]);
+		    ListNode node = new ListNode(l1[i]);
 		    if (i == l1.length-1) {
 		        node.next = null;
 		    } else {
@@ -25,7 +25,7 @@ public class RTest21 {
 		}
 		ListNode h1 = next;
 		for (int i = l2.length-1; i >= 0; i--) {
-		    ListNode node = test.new ListNode(l2[i]);
+		    ListNode node = new ListNode(l2[i]);
 		    if (i == l2.length-1) {
 		        node.next = null;
 		    } else {
@@ -84,14 +84,4 @@ public class RTest21 {
         }
         return head;
     }
-    /**
-     * Definition for singly-linked list.
-     **/
-     public class ListNode {
-         int val;
-         ListNode next;
-         ListNode() {}
-         ListNode(int val) { this.val = val; }
-         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     }
 }
