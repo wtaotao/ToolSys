@@ -11,8 +11,10 @@ public class RTest92 {
 
 	public static void main(String[] args) {
 	    RTest92 test = new RTest92();
-        int[] nums = {1,2,3,4,5};
-        int left = 2, right = 4;
+        int[] nums = {3,5};
+        int left = 1, right = 2;
+//        int[] nums = {1,2,3,4,5};
+//        int left = 2, right = 4;
         ListNode next = null;
         for (int i = nums.length-1; i >= 0; i--) {
             ListNode node = new ListNode(nums[i]);
@@ -36,6 +38,7 @@ public class RTest92 {
 	 * @return
 	 */
     public ListNode reverseBetween(ListNode head, int left, int right) {
+    	if (left == right) return head;
         //假设left和right都不超过链表的边界
         int count = 0;
         ListNode temp = head;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nikki.out.Print;
+import com.nikki.leetc.list.ListNode;
 
 /**
  * 两数相加
@@ -26,18 +27,18 @@ public class RTest2 {
 //		    Print.stringOut("" + val);
 //		}
 	    RTest2 test = new RTest2();
-	    ListNode l1 = test.new ListNode(2);
+	    ListNode l1 = new ListNode(2);
 	    ListNode h1 = l1;
-	    l1.next = test.new ListNode(4);
+	    l1.next = new ListNode(4);
 	    l1 = l1.next;
-	    l1.next = test.new ListNode(3);
+	    l1.next = new ListNode(3);
 	    l1 = l1.next;
-	    l1.next = test.new ListNode(8);
-	    ListNode l2 = test.new ListNode(5);
+	    l1.next = new ListNode(8);
+	    ListNode l2 = new ListNode(5);
 	    ListNode h2 = l2;
-	    l2.next = test.new ListNode(6);
+	    l2.next = new ListNode(6);
 	    l2 = l2.next;
-	    l2.next = test.new ListNode(6);
+	    l2.next = new ListNode(6);
 	    ListNode l = test.addTwoNumbers(h1, h2);
 	    while (l != null) {
 	        Print.stringOut("" + l.val);
