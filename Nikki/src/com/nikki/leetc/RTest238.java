@@ -11,7 +11,7 @@ import com.nikki.out.Print;
  * 除自身以外数组的乘积
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename RTest238.java
  * @version v0.1 2023年11月8日
  * @time 下午1:43:06 
@@ -27,17 +27,16 @@ public class RTest238 {
      * @param args
      */
     public static void main(String[] args) {
-//        int[] nums = {1,2,3,4};
-        int[] nums = {-1,1,0,-3,3};
+        int[] nums = {1,2,3,4};
+//        int[] nums = {-1,1,0,-3,3};
         Print.arrayOut(productExceptSelf(nums));
-
     }
     /**
      * <pre>
-     * 给你一个整数数组 nums，返回 数组 answer ，其中 answer[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积 。
-     * 题目数据 保证 数组 nums之中任意元素的全部前缀元素和后缀的乘积都在32位整数范围内。
-     * 请不要使用除法，且在 O(n) 时间复杂度内完成此题。
-     * 进阶：你可以在 O(1) 的额外空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组 不被视为 额外空间。）
+     * 给你一个整数数组nums，返回数组answer，其中answer[i]等于nums中除nums[i]之外其余各元素的乘积。
+     * 题目数据保证数组nums之中任意元素的全部前缀元素和后缀的乘积都在32位整数范围内。
+     * 请不要使用除法，且在O(n)时间复杂度内完成此题。
+     * 进阶：你可以在O(1)的额外空间复杂度内完成这个题目吗？（出于对空间复杂度分析的目的，输出数组不被视为额外空间。）
      * 输入: nums = [1,2,3,4] 输出: [24,12,8,6]
      * 输入: nums = [-1,1,0,-3,3] 输出: [0,0,9,0,0]
      * </pre>
@@ -57,6 +56,7 @@ public class RTest238 {
 //        }
 //        return answer;
 //    }
+    //需要结合题解
     public static int[] productExceptSelf(int[] nums) {
         int len = nums.length;
         if (len == 0) return new int[0];
@@ -70,7 +70,6 @@ public class RTest238 {
             tmp *= nums[i + 1];
             ans[i] *= tmp;
         }
-
         return ans;
     }
 }

@@ -31,9 +31,8 @@ public class RTest134 {
 //        int[] gas = {5,8,2,8};
 //        int[] cost = {6,5,6,6};
         int[] gas = {2,0,0};
-        int[] cost = {0,1,0};
-        Print.stringOut("The start station is:" + canCompleteCircuit(gas, cost));
-
+        int[] cost = {0,1,1};
+        Print.stringOut("The start station is:" + canCompleteCircuit1(gas, cost));
     }
     /**
      * 

@@ -11,7 +11,7 @@ import com.nikki.out.Print;
  *
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename RTest169.java
  * @version v0.1 2023年11月7日
  * @time 下午1:13:08 
@@ -21,7 +21,7 @@ public class RTest169 {
 
     /**
      * <pre>
-     * 给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。
+     * 给定一个大小为n的数组nums，返回其中的多数元素。多数元素是指在数组中出现次数大于⌊ n/2 ⌋的元素。
      * 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
      * </pre>
      *

@@ -11,7 +11,7 @@ import com.nikki.out.Print;
  * 最长公共前缀
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename RTest14.java
  * @version v0.1 2023年11月10日
  * @time 下午1:59:41 
@@ -37,7 +37,7 @@ public class RTest14 {
      * 
      * <pre>
      * 编写一个函数来查找字符串数组中的最长公共前缀。
-     * 如果不存在公共前缀，返回空字符串 ""。
+     * 如果不存在公共前缀，返回空字符串""。
      * 1 <= strs.length <= 200
      * 0 <= strs[i].length <= 200
      * strs[i] 仅由小写英文字母组成

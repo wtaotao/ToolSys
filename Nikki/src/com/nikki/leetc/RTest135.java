@@ -10,8 +10,7 @@ import com.nikki.out.Print;
  * <pre>
  * 分发糖果
  * </pre>
- *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename RTest135.java
  * @version v0.1 2023年11月8日
  * @time 下午3:39:23 
