@@ -1,5 +1,6 @@
 package com.nikki.leetc.list;
 
+import com.nikki.leetc.ListNode;
 import com.nikki.out.Print;
 
 /**

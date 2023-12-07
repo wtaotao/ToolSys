@@ -3,6 +3,8 @@ package com.nikki.leetc.list;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nikki.leetc.ListNode;
+
 /**
  * 删除排序链表中的重复元素 II
  * @author Jesse

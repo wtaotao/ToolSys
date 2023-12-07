@@ -7,6 +7,8 @@ package com.nikki.leetc;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+import com.nikki.out.Print;
+
 /**
  * <pre>
  * Definition for a binary tree node.
@@ -64,5 +66,46 @@ public class TreeNode {
             }
         }
         return rnode;
+    }
+    //假设节点值不为最大整数值
+    public static void print(TreeNode tree) {
+        Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+        boolean validLevel = false;
+        if (tree != null) {
+            queue.add(tree);
+            validLevel = true;
+        }
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+        while (!queue.isEmpty() && validLevel) {
+            int n = queue.size();
+            validLevel = false;
+            for (int i = 0; i < n; i++) {
+                TreeNode top = queue.poll();
+                if (sb.length() > 1) {
+                    sb.append(",");
+                }
+                if (top.val != Integer.MAX_VALUE) {
+                    sb.append(top.val);
+                    //左右子节点不为空则入队列
+                    if (top.left != null) {
+                        queue.add(top.left);
+                        validLevel = true;
+                    } else {
+                        queue.add(new TreeNode(Integer.MAX_VALUE));
+                    }
+                    if (top.right != null) {
+                        queue.add(top.right);
+                        validLevel = true;
+                    } else {
+                        queue.add(new TreeNode(Integer.MAX_VALUE));
+                    }
+                } else {
+                    sb.append("null");
+                }
+            }
+        }
+        sb.append("]");
+        Print.stringOut(sb.toString());
     }
 }

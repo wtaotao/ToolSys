@@ -3,6 +3,8 @@ package com.nikki.leetc.list;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.nikki.leetc.ListNode;
+
 /**
  * 环形链表
  * @author Jesse

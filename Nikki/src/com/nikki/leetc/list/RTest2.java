@@ -3,8 +3,8 @@ package com.nikki.leetc.list;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nikki.leetc.ListNode;
 import com.nikki.out.Print;
-import com.nikki.leetc.list.ListNode;
 
 /**
  * 两数相加

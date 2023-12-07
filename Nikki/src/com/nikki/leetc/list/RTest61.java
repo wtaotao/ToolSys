@@ -3,6 +3,7 @@ package com.nikki.leetc.list;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nikki.leetc.ListNode;
 import com.nikki.out.Print;
 
 /**
