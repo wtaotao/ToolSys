@@ -16,7 +16,7 @@ public class RTest124 {
 	public static void main(String[] args) {
 		RTest124 test = new RTest124();
 		Integer[] root = {1,2,3};
-		Print.stringOut("The largest sum is:" + test.maxPathSum(test.constructTree(root)));
+		Print.stringOut("The largest sum is:" + test.maxPathSum1(test.constructTree(root)));
 	}
     private TreeNode constructTree(Integer[] root) {
         TreeNode tree = null;
@@ -58,15 +58,42 @@ public class RTest124 {
 	 * @param root
 	 * @return
 	 */
-    public int maxPathSum(TreeNode root) {
+    //[-10,9,20,null,null,15,7]时错误
+    public int maxPathSum1(TreeNode root) {
         int max = Integer.MIN_VALUE;
         if (root == null) return max;
         //分别左、右子树最大和，假定节点都是非零正整数值
-        int lmax = maxPathSum(root.left);
-        int rmax = maxPathSum(root.right);
+        int lmax = maxPathSum1(root.left);
+        int rmax = maxPathSum1(root.right);
         
         max = lmax + root.val + rmax;
         
         return max;
+    }
+    int maxSum = Integer.MIN_VALUE;
+
+    public int maxPathSum(TreeNode root) {
+        maxGain(root);
+        return maxSum;
+    }
+
+    public int maxGain(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        
+        // 递归计算左右子节点的最大贡献值
+        // 只有在最大贡献值大于 0 时，才会选取对应子节点
+        int leftGain = Math.max(maxGain(node.left), 0);
+        int rightGain = Math.max(maxGain(node.right), 0);
+
+        // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+        int priceNewpath = node.val + leftGain + rightGain;
+
+        // 更新答案
+        maxSum = Math.max(maxSum, priceNewpath);
+
+        // 返回节点的最大贡献值
+        return node.val + Math.max(leftGain, rightGain);
     }
 }

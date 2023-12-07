@@ -23,7 +23,8 @@ public class RTest82 {
 	 * @param head
 	 * @return
 	 */
-    public ListNode deleteDuplicates(ListNode head) {
+	//上面例子输出错误
+    public ListNode deleteDuplicates1(ListNode head) {
         ListNode h = head;
         if (h == null || h.next == null) {
             return head;
@@ -71,5 +72,26 @@ public class RTest82 {
             }
         }
         return head;
+    }
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        
+        ListNode dummy = new ListNode(0, head);
+
+        ListNode cur = dummy;
+        while (cur.next != null && cur.next.next != null) {
+            if (cur.next.val == cur.next.next.val) {
+                int x = cur.next.val;
+                while (cur.next != null && cur.next.val == x) {
+                    cur.next = cur.next.next;
+                }
+            } else {
+                cur = cur.next;
+            }
+        }
+
+        return dummy.next;
     }
 }

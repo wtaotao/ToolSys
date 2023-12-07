@@ -62,11 +62,21 @@ public class RTest112 {
 	 * @param targetSum
 	 * @return
 	 */
-    public boolean hasPathSum(TreeNode root, int targetSum) {
+    public boolean hasPathSum1(TreeNode root, int targetSum) {
         boolean hasPath = false;
         if (root != null) {
-            hasPath = hasPathSum(root.left, targetSum-root.val) || hasPathSum(root.right, targetSum-root.val);
+            hasPath = hasPathSum1(root.left, targetSum-root.val) || hasPathSum1(root.right, targetSum-root.val);
         }
         return hasPath;
+    }
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null){
+            return false;
+        }
+        if(root.left == null && root.right == null){
+            return root.val == sum;
+        }
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+        
     }
 }

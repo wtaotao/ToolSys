@@ -33,16 +33,57 @@ public class RTest114 {
 	 * 输出：[1,null,2,null,3,null,4,null,5,null,6]
 	 * @param root
 	 */
-    public static void flatten(TreeNode root) {
+    public static void flatten1(TreeNode root) {
         if (root != null) {
             if (root.left != null)
             {
-                flatten(root.left);
+                flatten1(root.left);
                 root.left = root;
             }
             if (root.right != null) {
-                flatten(root.right);
+                flatten1(root.right);
             }
         }
+    }
+    public static void flatten(TreeNode root) {
+
+        while (root != null) { 
+
+            //左子树为 null，直接考虑下一个节点
+
+            if (root.left == null) {
+
+                root = root.right;
+
+            } else {
+
+                // 找左子树最右边的节点
+
+                TreeNode pre = root.left;
+
+                while (pre.right != null) {
+
+                    pre = pre.right;
+
+                } 
+
+                //将原来的右子树接到左子树的最右边节点
+
+                pre.right = root.right;
+
+                // 将左子树插入到右子树的地方
+
+                root.right = root.left;
+
+                root.left = null;
+
+                // 考虑下一个节点
+
+                root = root.right;
+
+            }
+
+        }
+
     }
 }

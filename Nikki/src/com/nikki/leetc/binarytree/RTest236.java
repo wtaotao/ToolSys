@@ -62,7 +62,7 @@ public class RTest236 {
 	 * @return
 	 */
     //思路：流出所有的从根到叶子节点的全路径，找出含两个节点的全路径，第一个节点的前一个节点即为最近公共祖先
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestor1(TreeNode root, TreeNode p, TreeNode q) {
         TreeNode node = null;
         List<String> paths = calPaths(root);
         String path = null, prefix = null;
@@ -77,7 +77,7 @@ public class RTest236 {
             prefix = path.substring(0, min);
         }
         for (int i = 0; i < prefix.length(); i++) {
-            while ()
+//            while ()
         }
         return node;
     }
@@ -98,5 +98,20 @@ public class RTest236 {
         }
         if (list.size() == 0) list.add("" + root.val);
         return list;
+    }
+    private TreeNode ans;
+    private boolean dfs(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) return false;
+        boolean lson = dfs(root.left, p, q);
+        boolean rson = dfs(root.right, p, q);
+        if ((lson && rson) || ((root.val == p.val || root.val == q.val) && (lson || rson))) {
+            ans = root;
+        } 
+        return lson || rson || (root.val == p.val || root.val == q.val);
+    }
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        this.dfs(root, p, q);
+        return this.ans;
     }
 }

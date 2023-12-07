@@ -2,6 +2,7 @@ package com.nikki.leetc.binarytree;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Queue;
 
 /**
  * 填充每个节点的下一个右侧节点指针II
@@ -66,7 +67,28 @@ public class RTest117 {
 	 * @return
 	 */
     public Node connect(Node root) {
-        
+        if (root == null) {
+            return null;
+        }
+        Queue<Node> queue = new ArrayDeque<Node>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int n = queue.size();
+            Node last = null;
+            for (int i = 1; i <= n; ++i) {
+                Node f = queue.poll();
+                if (f.left != null) {
+                    queue.offer(f.left);
+                }
+                if (f.right != null) {
+                    queue.offer(f.right);
+                }
+                if (i != 1) {
+                    last.next = f;
+                }
+                last = f;
+            }
+        }
         return root;
     }
  // Definition for a Node.

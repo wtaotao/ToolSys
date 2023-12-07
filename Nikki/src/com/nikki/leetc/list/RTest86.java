@@ -35,7 +35,7 @@ public class RTest86 {
 	 * @param x
 	 * @return
 	 */
-	public ListNode partition(ListNode head, int x) {
+	public ListNode partition1(ListNode head, int x) {
 		ListNode temp = head;
 		if (temp == null || temp.next == null) {
 		    return head;
@@ -65,7 +65,7 @@ public class RTest86 {
 		        ListNode swap = temp;
 		        temp = temp.next;
 		        tprev.next = temp;
-		        //插入
+		        //插入，mprev可能为null
 		        mprev.next = swap;
 		        mprev = mprev.next;
 		        swap.next = mark;
@@ -76,4 +76,21 @@ public class RTest86 {
 		}
 	    return head;
 	}
+    public ListNode partition(ListNode head, int x) {
+        ListNode smlDummy = new ListNode(0), bigDummy = new ListNode(0);
+        ListNode sml = smlDummy, big = bigDummy;
+        while (head != null) {
+            if (head.val < x) {
+                sml.next = head;
+                sml = sml.next;
+            } else {
+                big.next = head;
+                big = big.next;
+            }
+            head = head.next;
+        }
+        sml.next = bigDummy.next;
+        big.next = null;
+        return smlDummy.next;
+    }
 }

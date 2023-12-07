@@ -39,7 +39,7 @@ public class RTest25 {
 	 * @param k
 	 * @return
 	 */
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode reverseKGroup1(ListNode head, int k) {
         ListNode p = head;
         ListNode[] list = new ListNode[k];
         int i = 0;
@@ -50,7 +50,7 @@ public class RTest25 {
             p = p.next;
             if (i == k) {
                 prev.next = list[0];
-                reverse(list);
+                reverse1(list);
                 if (isFirst) {
                     head = list[k-1];
                     isFirst = false;
@@ -63,9 +63,43 @@ public class RTest25 {
         return head;
     }
     
-    private void reverse(ListNode[] list) {
+    private void reverse1(ListNode[] list) {
         for (int i = 1; i < list.length; i++) {
             list[i].next = list[i-1];
         }
+    }
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode pre = dummy;
+        ListNode end = dummy;
+
+        while (end.next != null) {
+            for (int i = 0; i < k && end != null; i++) end = end.next;
+            if (end == null) break;
+            ListNode start = pre.next;
+            ListNode next = end.next;
+            end.next = null;
+            pre.next = reverse(start);
+            start.next = next;
+            pre = start;
+
+            end = pre;
+        }
+        return dummy.next;
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode pre = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = next;
+        }
+        return pre;
     }
 }

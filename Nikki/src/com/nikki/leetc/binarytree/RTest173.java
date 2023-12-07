@@ -1,5 +1,8 @@
 package com.nikki.leetc.binarytree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.nikki.leetc.TreeNode;
 
 /**
@@ -26,6 +29,8 @@ public class RTest173 {
 	 *
 	 */
 	class BSTIterator {
+	    private int idx;
+	    private List<Integer> arr;
         /**
          * BSTIterator(TreeNode root) 初始化
          * BSTIterator 类的一个对象。BST 的根节点 root 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 
@@ -34,14 +39,16 @@ public class RTest173 {
          * @param root
          */
 	    public BSTIterator(TreeNode root) {
-
+	        idx = 0;
+	        arr = new ArrayList<Integer>();
+	        inorderTraversal(root, arr);
 	    }
 	    /**
 	     * boolean hasNext() 如果向指针右侧遍历存在数字，则返回 true ；否则返回 false 。
 	     * @return
 	     */
 	    public int next() {
-
+	        return arr.get(idx++);
 	    }
 	    /**
 	     * int next()将指针向右移动，然后返回指针处的数字。
@@ -50,7 +57,15 @@ public class RTest173 {
 	     * @return
 	     */
 	    public boolean hasNext() {
-
+	        return idx < arr.size();
+	    }
+	    private void inorderTraversal(TreeNode root, List<Integer> arr) {
+	        if (root == null) {
+	            return;
+	        }
+	        inorderTraversal(root.left, arr);
+	        arr.add(root.val);
+	        inorderTraversal(root.right, arr);
 	    }
 	}
 }
