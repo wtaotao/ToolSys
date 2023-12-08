@@ -1,11 +1,10 @@
 package com.nikki.leetc.binarytree;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 import com.nikki.leetc.TreeNode;
+import com.nikki.out.Print;
 
 /**
  * 二叉树的最近公共祖先
@@ -16,39 +15,42 @@ public class RTest236 {
 
 	public static void main(String[] args) {
 	    RTest236 test = new RTest236();
-		Integer[] root = {3,5,1,6,2,0,8,null,null,7,4};
-		TreeNode tree = test.constructTree(root);
-
+		Integer[] root = {3,5,1};
+//		Integer[] root = {3,5,1,6,2,0,8,null,null,7,4};
+		TreeNode tree = TreeNode.constructTree(root);
+		int p = 5, q = 1;
+		TreeNode node = test.lowestCommonAncestor(tree, tree.left, tree.right);
+		Print.stringOut("The lowest common ancestor is:" + node.val);
 	}
-    private TreeNode constructTree(Integer[] root) {
-        TreeNode tree = null;
-        if (root == null || root[0] == null) return tree;
-        //这个还不能用单纯的栈呢，得用双端队列
-        Deque<TreeNode> stack = new ArrayDeque<>(); 
-        tree = new TreeNode(root[0]);
-        TreeNode temp = tree;
-        int count = 0;
-        for (int i = 1; i < root.length; i++) {
-            if (count == 2) {
-                temp = stack.pollFirst();
-                count = 0;
-            }
-            if (root[i] != null) {
-                TreeNode node = new TreeNode(root[i]);
-                if (count == 0) {
-                    temp.left = node;
-                    count++;
-                } else if (count == 1) {
-                    temp.right = node;
-                    count++;
-                }
-                stack.addLast(node);
-            } else {
-                count++;
-            }
-        }
-        return tree;
-    }
+//    private TreeNode constructTree(Integer[] root) {
+//        TreeNode tree = null;
+//        if (root == null || root[0] == null) return tree;
+//        //这个还不能用单纯的栈呢，得用双端队列
+//        Deque<TreeNode> stack = new ArrayDeque<>(); 
+//        tree = new TreeNode(root[0]);
+//        TreeNode temp = tree;
+//        int count = 0;
+//        for (int i = 1; i < root.length; i++) {
+//            if (count == 2) {
+//                temp = stack.pollFirst();
+//                count = 0;
+//            }
+//            if (root[i] != null) {
+//                TreeNode node = new TreeNode(root[i]);
+//                if (count == 0) {
+//                    temp.left = node;
+//                    count++;
+//                } else if (count == 1) {
+//                    temp.right = node;
+//                    count++;
+//                }
+//                stack.addLast(node);
+//            } else {
+//                count++;
+//            }
+//        }
+//        return tree;
+//    }
 	/**
 	 * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
 	 * 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大

@@ -4,6 +4,8 @@
  */
 package com.nikki.leetc;
 
+import com.nikki.out.Print;
+
 /**
  * <pre>
  *
@@ -38,5 +40,18 @@ public class ListNode {
             }
         }
         return head;
+    }
+    public static void print(ListNode list) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+        while (list != null) {
+            if (sb.length() > 1) {
+                sb.append(",");
+            }
+            sb.append(list.val);
+            list = list.next;
+        }
+        sb.append("]");
+        Print.stringOut(sb.toString());
     }
 }

@@ -42,7 +42,7 @@ public class RTest77 {
 	}
 	/**
 	 * 给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
-	 * 你可以按 任何顺序 返回答案。
+	 * 你可以按任何顺序返回答案。
 	 * 输入：n = 4, k = 2
 	 * 输出：
      * [
@@ -59,20 +59,25 @@ public class RTest77 {
 	 */
     public static List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> combinations = new ArrayList<List<Integer>>();
+        //数的个数大于可选数数量，或者选数个数为0，返回空
         if (n < k || k <= 0) {
             return combinations;
         }
+        //递归回溯
         backtrack(n, k, 0, combinations, new ArrayList<Integer>());
         return combinations;
     }
     
     private static void backtrack(int n, int k, int index, List<List<Integer>> combinations, List<Integer> list) {
+        //组合字符串完成
         if (k == index) {
             List<Integer> tempList = new ArrayList<Integer>();
             tempList.addAll(list);
             combinations.add(tempList);
         } else {
+            //从n个数中选择一个填充当前字符串位
             for (int i = 0; i < n; i++) {
+                //不含当前数，且串为空或者最后一个节点小于当前数
                 if (!list.contains(i+1) && (list.isEmpty() || list.get(list.size()-1) < i+1)) {
                     list.add(i+1);
                     backtrack(n, k, index+1, combinations, list);

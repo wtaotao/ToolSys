@@ -23,7 +23,7 @@ public class RTest61 {
             node.next = next;
             next = node;
         }
-        ListNode newList = rotateRight(next, k);
+        ListNode newList = test.rotateRight(next, k);
         while (newList != null) {
             Print.stringOut("val :" + newList.val);
             newList = newList.next;
