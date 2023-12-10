@@ -1,7 +1,11 @@
 package com.nikki.leetc.map;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 克隆图
@@ -50,11 +54,71 @@ public class RTest133 {
 	 * @param node
 	 * @return
 	 */
-    public Node cloneGraph(Node node) {
-        
-        return node;
+//	DFS (深度遍历)
+    public Node cloneGraph1(Node node) {
+        Map<Node, Node> lookup = new HashMap<>();
+
+        return dfs(node, lookup);
+
     }
 
+
+
+    private Node dfs(Node node, Map<Node,Node> lookup) {
+
+        if (node == null) return null;
+
+        if (lookup.containsKey(node)) return lookup.get(node);
+
+        Node clone = new Node(node.val, new ArrayList<>());
+
+        lookup.put(node, clone);
+
+        for (Node n : node.neighbors)clone.neighbors.add(dfs(n,lookup));
+
+        return clone;
+
+    }
+//    BFS (广度遍历)
+    public Node cloneGraph(Node node) {
+
+        if (node == null) return null;
+
+        Map<Node, Node> lookup = new HashMap<>();
+
+        Node clone = new Node(node.val, new ArrayList<>());
+
+        lookup.put(node, clone);
+
+        Deque<Node> queue = new LinkedList<>();
+
+        queue.offer(node);
+
+        while (!queue.isEmpty()) {
+
+            Node tmp = queue.poll();
+
+            for (Node n : tmp.neighbors) {
+
+                if (!lookup.containsKey(n)) {
+
+                    lookup.put(n, new Node(n.val, new ArrayList<>()));
+
+                    queue.offer(n);
+
+                }
+
+                lookup.get(tmp).neighbors.add(lookup.get(n));
+
+            }
+
+        }
+
+        return clone;
+
+    }
+
+}
  // Definition for a Node.
  class Node {
      public int val;
