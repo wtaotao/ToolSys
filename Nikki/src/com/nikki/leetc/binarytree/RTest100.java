@@ -13,15 +13,13 @@ public class RTest100 {
 	public static void main(String[] args) {
 	    RTest100 test = new RTest100();
 	    
-	    TreeNode p11 = new TreeNode(2);
-	    TreeNode p12 = new TreeNode(3);
-	    TreeNode p0 = new TreeNode(1, p11, p12);
-	    
-	    TreeNode q11 = new TreeNode(2);
-	    TreeNode q12 = new TreeNode(4);
-	    TreeNode q0 = new TreeNode(1, q11, q12);
+	    Integer[] p = {1,2,3};
+	    TreeNode tp = TreeNode.constructTree(p);
+
+	    Integer[] q = {1,2,3};
+	    TreeNode tq = TreeNode.constructTree(q);
 		
-        Print.stringOut("Is same tree?" + test.isSameTree(p0, q0));
+        Print.stringOut("Is same tree?" + test.isSameTree(tp, tq));
 	}
 	/**
 	 * 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。

@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import com.nikki.leetc.ListNode;
 import com.nikki.leetc.TreeNode;
+import com.nikki.out.Print;
 
 /**
  * 二叉树的锯齿形层序遍历
@@ -17,11 +19,15 @@ import com.nikki.leetc.TreeNode;
 public class RTest103 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Integer[] root = {3,9,20,null,null,15,7};
+        TreeNode tree = TreeNode.constructTree(root);
+        
+        RTest103 test = new RTest103();
+        List<List<Integer>> list = test.zigzagLevelOrder(tree);
+        Print.printLists(list);
 	}
 	/**
-	 * 给你二叉树的根节点 root ，返回其节点值的 锯齿形层序遍历 。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
+	 * 给你二叉树的根节点root，返回其节点值的锯齿形层序遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
 	 * 输入：root = [3,9,20,null,null,15,7]
 	 * 输出：[[3],[20,9],[15,7]]
 	 * @param root
@@ -34,27 +40,35 @@ public class RTest103 {
         }
 
         Queue<TreeNode> nodeQueue = new ArrayDeque<TreeNode>();
+        //根节点入队列
         nodeQueue.offer(root);
+        //标志位控制从左到右还是从右到左
         boolean isOrderLeft = true;
-
+        //队列不为空时逐个弹出进行处理
         while (!nodeQueue.isEmpty()) {
+            //每层创建一个列表保存
             Deque<Integer> levelList = new LinkedList<Integer>();
             int size = nodeQueue.size();
             for (int i = 0; i < size; ++i) {
+                //取出队首元素
                 TreeNode curNode = nodeQueue.poll();
                 if (isOrderLeft) {
                     levelList.offerLast(curNode.val);
                 } else {
                     levelList.offerFirst(curNode.val);
                 }
+                //左节点入队列
                 if (curNode.left != null) {
                     nodeQueue.offer(curNode.left);
                 }
+                //右节点入队列
                 if (curNode.right != null) {
                     nodeQueue.offer(curNode.right);
                 }
             }
+            //本层节点入列表
             ans.add(new LinkedList<Integer>(levelList));
+            //转换方向
             isOrderLeft = !isOrderLeft;
         }
 

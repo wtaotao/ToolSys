@@ -11,11 +11,11 @@ public class RTest208 {
 
 	}
 	/**
-	 * Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
+	 * Trie（发音类似 "try"）或者说前缀树是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
 	 * 请你实现 Trie 类：
 	 * 1 <= word.length, prefix.length <= 2000
-	 * word 和 prefix 仅由小写英文字母组成
-	 * insert、search 和 startsWith 调用次数 总计 不超过 3 * 104 次
+	 * word和prefix仅由小写英文字母组成
+	 * insert、search和startsWith调用次数总计不超过3 * 104次
 	 * @author Jesse
 	 *
 	 */
@@ -43,7 +43,7 @@ public class RTest208 {
 	        isEnd = false;
 	    }
 	    /**
-	     * void insert(String word) 向前缀树中插入字符串 word 。
+	     * void insert(String word)向前缀树中插入字符串word。
 	     * @param word
 	     */
 	    public void insert(String word) {

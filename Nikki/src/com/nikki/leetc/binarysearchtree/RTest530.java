@@ -1,4 +1,7 @@
 package com.nikki.leetc.binarysearchtree;
+
+import com.nikki.leetc.TreeNode;
+
 /**
  * 二叉搜索树的最小绝对差
  *@author:Jesse
@@ -39,21 +42,4 @@ public class RTest530 {
         }
         dfs(root.right);
     }
-    /**
-     * Definition for a binary tree node.
-     **/
-    public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode() {}
-         public TreeNode(int val) { 
-             this.val = val; 
-         }
-         TreeNode(int val, TreeNode left, TreeNode right) {
-         this.val = val;
-         this.left = left;
-         this.right = right;
-           }
-     }
 }

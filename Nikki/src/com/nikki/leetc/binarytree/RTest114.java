@@ -11,19 +11,12 @@ import com.nikki.out.Print;
 public class RTest114 {
 
 	public static void main(String[] args) {
-		int[] nums = {1,2,5,3,4,-1,6};
-		RTest114 test = new RTest114();
+		Integer[] nums = {1,2,5,3,4,null,6};
 		
-	      TreeNode p21 = new TreeNode(3);
-	      TreeNode p22 = new TreeNode(4);
-	      TreeNode p24 = new TreeNode(6);
-	      TreeNode p11 = new TreeNode(2, p21, p22);
-	      TreeNode p12 = new TreeNode(5, null, p24);
-	      TreeNode p0 = new TreeNode(1, p11, p12);
+		TreeNode tree = TreeNode.constructTree(nums);
+		flatten(tree);
 	      
-	      flatten(p0);
-	      
-	      Print.stringOut(p0.toString());
+	    Print.stringOut(tree.toString());
 	}
 	/**
 	 * 给你二叉树的根结点 root ，请你将它展开为一个单链表：
@@ -46,44 +39,24 @@ public class RTest114 {
         }
     }
     public static void flatten(TreeNode root) {
-
         while (root != null) { 
-
             //左子树为 null，直接考虑下一个节点
-
             if (root.left == null) {
-
                 root = root.right;
-
             } else {
-
                 // 找左子树最右边的节点
-
                 TreeNode pre = root.left;
-
                 while (pre.right != null) {
-
                     pre = pre.right;
-
                 } 
-
                 //将原来的右子树接到左子树的最右边节点
-
                 pre.right = root.right;
-
                 // 将左子树插入到右子树的地方
-
                 root.right = root.left;
-
                 root.left = null;
-
                 // 考虑下一个节点
-
                 root = root.right;
-
             }
-
         }
-
     }
 }

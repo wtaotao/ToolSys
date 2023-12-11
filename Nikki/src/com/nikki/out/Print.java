@@ -37,7 +37,20 @@ public class Print {
 		System.out.println(s);
 	}
 	
-    public static void printLists (List<List<Integer>> lists) {
+	public static void printList(List<Integer> list) {
+	    StringBuffer sb = new StringBuffer();
+	    sb.append("[");
+	    for (int i = 0; i < list.size(); i++) {
+	       if (sb.length() > 1) {
+	           sb.append(",");
+	       } 
+	       sb.append(list.get(i));
+	    }
+	    sb.append("]");
+	    Print.stringOut(sb.toString());
+	}
+	
+    public static void printLists(List<List<Integer>> lists) {
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < lists.size(); j++) {
             List<Integer> list = lists.get(j);

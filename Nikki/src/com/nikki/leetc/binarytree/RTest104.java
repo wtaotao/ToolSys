@@ -13,13 +13,10 @@ public class RTest104 {
 	public static void main(String[] args) {
 	    RTest104 test = new RTest104();
 	    
-	    TreeNode p21 = new TreeNode(15);
-	    TreeNode p22 = new TreeNode(7);
-	    TreeNode p12 = new TreeNode(20, p21, p22);
-	    TreeNode p11 = new TreeNode(9);
-	    TreeNode p0 = new TreeNode(3, p11, p12);
+	    Integer[] root = {3,9,20,null,null,15,7};
+	    TreeNode tree = TreeNode.constructTree(root);
 	    
-	    Print.stringOut("The max depth is :" + test.maxDepth(p0));
+	    Print.stringOut("The max depth is :" + test.maxDepth(tree));
 	}
 	/**
 	 * 给定一个二叉树 root ，返回其最大深度。

@@ -15,14 +15,10 @@ public class RTest101 {
 	public static void main(String[] args) {
 		RTest101 test = new RTest101();
 		
-		TreeNode p21 = new TreeNode(3);
-		TreeNode p22 = new TreeNode(4);
-		TreeNode p23 = new TreeNode(4);
-		TreeNode p24 = new TreeNode(3);
-		TreeNode p11 = new TreeNode(2, p21, p22);
-		TreeNode p12 = new TreeNode(2, p23, p24);
-		TreeNode p0 = new TreeNode(1, p11, p12);
-		Print.stringOut("Is symmetric?" + test.isSymmetric(p0));
+		Integer[] root = {1,2,2,3,4,4,null}; 
+		TreeNode tree = TreeNode.constructTree(root);
+		
+		Print.stringOut("Is symmetric?" + test.isSymmetric1(tree));
 	}
 	/**
 	 * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
@@ -38,16 +34,26 @@ public class RTest101 {
 		//调用递归函数，比较左节点，右节点
 		return dfs(root.left,root.right);
     }
+    /**
+     * 
+     * <pre>
+     * 深度优先遍历
+     * </pre>
+     *
+     * @param left
+     * @param right
+     * @return
+     */
 	boolean dfs(TreeNode left, TreeNode right) {
 		//递归的终止条件是两个节点都为空
-		//或者两个节点中有一个为空
-		//或者两个节点的值不相等
 		if(left==null && right==null) {
 			return true;
 		}
+		//或者两个节点中有一个为空
 		if(left==null || right==null) {
 			return false;
 		}
+		//或者两个节点的值不相等
 		if(left.val!=right.val) {
 			return false;
 		}
@@ -55,6 +61,7 @@ public class RTest101 {
 		//以及比较  左节点的右孩子 和 右节点的左孩子
 		return dfs(left.left,right.right) && dfs(left.right,right.left);
 	}
+	//非递归方法
 	public boolean isSymmetric1(TreeNode root) {
 		if(root==null || (root.left==null && root.right==null)) {
 			return true;
