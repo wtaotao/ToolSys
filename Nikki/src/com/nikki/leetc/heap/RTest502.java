@@ -1,5 +1,8 @@
 package com.nikki.leetc.heap;
 
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
 import com.nikki.out.Print;
 
 /**
@@ -25,6 +28,7 @@ public class RTest502 {
 	 * 总而言之，从给定项目中选择最多k个不同项目的列表，以最大化最终资本，并输出最终可获得的最多资本。
 	 * 答案保证在32位有符号整数范围内。
 	 * 输入：k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]
+	 * 输入：k = 10, w = 0, profits = [1,2,3], capital = [0,1,2] 预期6
      * 输出：4
      * 解释：
      * 由于你的初始资本为 0，你仅可以从0号项目开始。
@@ -38,7 +42,7 @@ public class RTest502 {
 	 * @param capital
 	 * @return
 	 */
-    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
+    public int findMaximizedCapital1(int k, int w, int[] profits, int[] capital) {
         //思路：根据初始资本，在capital里选择可启动的项目，选择利润最高的；把利润加入最终资本，再以前面的逻辑选择下一个项目；直至完成最多的项目，返回最终的资本。
         int max = 0;
         if (capital == null || profits == null || capital.length != profits.length || k > capital.length) {
@@ -64,5 +68,31 @@ public class RTest502 {
             profits[index] = 0;
         }
         return max;
+    }
+    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
+        int n = profits.length;
+        int curr = 0;
+        int[][] arr = new int[n][2];
+
+        for (int i = 0; i < n; ++i) {
+            arr[i][0] = capital[i];
+            arr[i][1] = profits[i];
+        }
+        Arrays.sort(arr, (a, b) -> a[0] - b[0]);
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>((x, y) -> y - x);
+        for (int i = 0; i < k; ++i) {
+            while (curr < n && arr[curr][0] <= w) {
+                pq.add(arr[curr][1]);
+                curr++;
+            }
+            if (!pq.isEmpty()) {
+                w += pq.poll();
+            } else {
+                break;
+            }
+        }
+
+        return w;
     }
 }

@@ -12,7 +12,8 @@ import com.nikki.out.Print;
 public class RTest918 {
 
 	public static void main(String[] args) {
-		int[] nums = {1,-2,3,-2};
+//		int[] nums = {1,-2,3,-2};
+		int[] nums = {-5,4,-6};
         Print.stringOut("The max sum is:" + maxSubarraySumCircular(nums));
 	}
 	/**
@@ -27,10 +28,11 @@ public class RTest918 {
 	 * @param nums
 	 * @return
 	 */
-    public static int maxSubarraySumCircular(int[] nums) {
+	//nums = [5,-3,5]会出错
+    public static int maxSubarraySumCircular1(int[] nums) {
         //思路：利用上一题的思路，但需循环搜索至第一次重新开始的位置
         //开始搜索，遇到第一个正数，放入备选，依次往后搜索，计算和；遇到正数，则直接加入，遇到负数，需要计算和是否为正-为正则继续，为负则从头开始
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         if (nums == null || nums.length == 0) {
             return max;
         }
@@ -87,5 +89,28 @@ public class RTest918 {
             max = submax;
         }
         return max;
+    }
+    public int maxSubarraySumCircular(int[] nums) {
+        int n = nums.length;
+        int[] leftMax = new int[n];
+        // 对坐标为 0 处的元素单独处理，避免考虑子数组为空的情况
+        leftMax[0] = nums[0];
+        int leftSum = nums[0];
+        int pre = nums[0];
+        int res = nums[0];
+        for (int i = 1; i < n; i++) {
+            pre = Math.max(pre + nums[i], nums[i]);
+            res = Math.max(res, pre);
+            leftSum += nums[i];
+            leftMax[i] = Math.max(leftMax[i - 1], leftSum);
+        }
+
+        // 从右到左枚举后缀，固定后缀，选择最大前缀
+        int rightSum = 0;
+        for (int i = n - 1; i > 0; i--) {
+            rightSum += nums[i];
+            res = Math.max(res, rightSum + leftMax[i - 1]);
+        }
+        return res;
     }
 }
