@@ -23,7 +23,7 @@ public class HelloWorld {
 	        Print.stringOut("value:" + i);
 	    }
 	}
-
+    //测试字符串反转
 	private void testSBReverse() {
 	    StringBuffer sb1 = new StringBuffer("ABCD");
 	    StringBuilder sb2 = new StringBuilder("EFG");
