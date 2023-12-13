@@ -12,7 +12,7 @@ public class HelloWorld {
 		
 		ins.testListAdd();
 	}
-	
+	//测试链表增加null
 	private void testListAdd() {
 	    LinkedList<Integer> list = new LinkedList<Integer>();
 	    list.add(1);
