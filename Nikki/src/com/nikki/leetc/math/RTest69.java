@@ -1,4 +1,7 @@
 package com.nikki.leetc.math;
+
+import com.nikki.out.Print;
+
 /**
  * x 的平方根
  *@author:Jesse
@@ -7,19 +10,29 @@ package com.nikki.leetc.math;
 public class RTest69 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int x = 16;
+		Print.stringOut("The res is:" + mySqrt(x));
 
 	}
 	/**
-	 * 给你一个非负整数 x ，计算并返回 x 的 算术平方根 。
-	 * 由于返回类型是整数，结果只保留 整数部分 ，小数部分将被 舍去 。
-	 * 注意：不允许使用任何内置指数函数和算符，例如 pow(x, 0.5) 或者 x ** 0.5 。
+	 * 给你一个非负整数x，计算并返回x的算术平方根 。
+	 * 由于返回类型是整数，结果只保留整数部分，小数部分将被舍去。
+	 * 注意：不允许使用任何内置指数函数和算符，例如pow(x, 0.5)或者x**0.5。
 	 * 输入：x = 4
-输出：2
+     * 输出：2
 	 * @param x
 	 * @return
 	 */
-    public int mySqrt(int x) {
-
+    public static int mySqrt(int x) {
+        //思路：反过来以乘法找到逼近值
+        int val = 0;
+        int max = x;
+        for (int i = max; i > 0; i--) {
+            if (i*i <= x) {
+                val = i;
+                break;
+            }
+        }
+        return val;
     }
 }
