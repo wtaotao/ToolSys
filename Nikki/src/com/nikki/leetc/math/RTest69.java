@@ -23,7 +23,7 @@ public class RTest69 {
 	 * @param x
 	 * @return
 	 */
-    public static int mySqrt(int x) {
+    public static int mySqrt1(int x) {
         //思路：反过来以乘法找到逼近值
         int val = 0;
         int max = x;
@@ -35,4 +35,21 @@ public class RTest69 {
         }
         return val;
     }
+    
+ int s;
+    
+ public int mySqrt(int x) {
+     s=x;
+     if(x==0) return 0;
+    return ((int)(sqrts(x)));
+  }
+    
+    public double sqrts(double x){
+      double res = (x + s / x) / 2;
+    if (res == x) {
+      return x;
+    } else {
+      return sqrts(res);
+    }
+    } 
 }

@@ -2,6 +2,8 @@ package com.nikki.leetc.math;
 
 import java.util.Stack;
 
+import com.nikki.out.Print;
+
 /**
  *回文数
  *@author:Jesse
@@ -10,7 +12,8 @@ import java.util.Stack;
 public class RTest9 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int x = 10;
+		Print.stringOut("Is palindrome?" + isPalindrome(x));
 
 	}
 	/**
@@ -22,15 +25,22 @@ public class RTest9 {
 	 * @param x
 	 * @return
 	 */
-    public boolean isPalindrome(int x) {
+    public static boolean isPalindrome(int x) {
         //思路：每位上的数压入堆栈，弹出时按位乘以10，判断结果是不是跟原数相等
         boolean flag = false;
+        int tx = Math.abs(x);
         Stack<Integer> stack = new Stack<Integer>();
-        while(x != 0) {
-            stack.push(x%10);
-            x = x/10;
+        while (tx != 0) {
+            stack.push(tx%10);
+            tx = tx/10;
         }
-        int 
+        int tp = 0;
+        int operator = 1;
+        while (!stack.empty()) {
+        	tp = tp + operator*stack.pop();
+        	operator = 10*operator;
+        }
+        if (tp == x) flag = true;
         return flag;
     }
 }

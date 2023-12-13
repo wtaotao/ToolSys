@@ -1,4 +1,4 @@
-package com.nikki.leetc.dynamicplan;
+package com.nikki.leetc.onedynamicplan;
 /**
  *打家劫舍
  *@author:Jesse

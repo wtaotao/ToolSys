@@ -1,4 +1,4 @@
-package com.nikki.leetc.dynamicplan;
+package com.nikki.leetc.onedynamicplan;
 /**
  *爬楼梯
  *@author:Jesse

@@ -24,6 +24,11 @@ public class RTest172 {
 	 */
     public static int trailingZeroes(int n) {
         //思路：2*5=10，偶数均可分解出2，因此0的数目就是5的个数
-        return n/5;
+        int ans = 0;
+        while (n != 0) {
+            n /= 5;
+            ans += n;
+        }
+        return ans;
     }
 }
