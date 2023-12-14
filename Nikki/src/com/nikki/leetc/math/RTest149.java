@@ -11,11 +11,12 @@ import java.util.Map;
 public class RTest149 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[][] points = {{1,1},{2,2},{3,3}};
+		
 
 	}
 	/**
-	 * 给你一个数组 points ，其中 points[i] = [xi, yi] 表示 X-Y 平面上的一个点。求最多有多少个点在同一条直线上。
+	 * 给你一个数组points，其中points[i] = [xi, yi]表示X-Y平面上的一个点。求最多有多少个点在同一条直线上。
 	 * 输入：points = [[1,1],[2,2],[3,3]]
      * 输出：3
 	 * @param points
@@ -23,10 +24,13 @@ public class RTest149 {
 	 */
     public int maxPoints(int[][] points) {
         int n = points.length;
+        //如果点数小于2，则直接返回总点数
         if (n <= 2) {
             return n;
         }
+        //共线点数
         int ret = 0;
+        //遍历每一个点
         for (int i = 0; i < n; i++) {
             if (ret >= n - i || ret > n / 2) {
                 break;

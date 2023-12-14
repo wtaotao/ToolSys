@@ -11,17 +11,54 @@ public class RTest188 {
 
 	}
 	/**
-	 * 给你一个整数数组 prices 和一个整数 k ，其中 prices[i] 是某支给定的股票在第 i 天的价格。
-	 * 设计一个算法来计算你所能获取的最大利润。你最多可以完成 k 笔交易。也就是说，你最多可以买 k 次，卖 k 次。
+	 * 给你一个整数数组prices和一个整数k，其中prices[i]是某支给定的股票在第i天的价格。
+	 * 设计一个算法来计算你所能获取的最大利润。你最多可以完成k笔交易。也就是说，你最多可以买k次，卖k次。
 	 * 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
 	 * 输入：k = 2, prices = [2,4,1]
-输出：2
-解释：在第 1 天 (股票价格 = 2) 的时候买入，在第 2 天 (股票价格 = 4) 的时候卖出，这笔交易所能获得利润 = 4-2 = 2 。
+     * 输出：2
+     * 解释：在第1天(股票价格 = 2)的时候买入，在第2天(股票价格 = 4)的时候卖出，这笔交易所能获得利润 = 4-2 = 2 。
 	 * @param k
 	 * @param prices
 	 * @return
 	 */
     public int maxProfit(int k, int[] prices) {
-
+        //算出隔天的价格差，找出k连续最大和的子集;是否存在跨负值且和比前面逻辑更大的子集？？？
+        if (prices == null || prices.length < 2) return 0;
+        int max = 0;
+        int[] profits = new int[prices.length-1]; 
+        for (int i = 0; i < profits.length; i++) {
+            profits[i] = prices[i+1] - prices[i];
+        }
+        //找出总和前二大的连续正值区间
+        int[] kst = new int[k];
+        int sum = 0;
+        for (int i = 0; i < profits.length; i++) {
+            if (profits[i] >= 0) {
+                sum += profits[i];
+            }
+            //区间结束：遇到了负值或者数组结尾
+            if (profits[i] < 0 || i == profits.length-1) {
+                boolean isUpdating = false;
+                int temp = 0;
+                for (int j = 0; j < kst.length; j++) {
+                    if (!isUpdating && sum > kst[j]) {
+                        temp = kst[j];
+                        kst[j] = sum;
+                        isUpdating = true;
+                        continue;
+                    }
+                    if (isUpdating) {
+                        int ex = kst[j];
+                        kst[j] = temp;
+                        temp = ex;
+                    }
+                }
+                sum = 0;
+            }
+        }
+        for (int i: kst) {
+            max += i;
+        }
+        return max;
     }
 }
