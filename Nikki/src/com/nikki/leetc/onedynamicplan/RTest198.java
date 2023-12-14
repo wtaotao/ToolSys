@@ -25,7 +25,8 @@ public class RTest198 {
 	 * @param nums
 	 * @return
 	 */
-    public int rob(int[] nums) {
+//	nums =[4,1,2,7,5,3,1]结果错
+    public int rob1(int[] nums) {
         //思路：不自动报警就不能连续偷,可以选择每隔一个或者两个进行偷窃，否则中间可以多偷一家房屋而不触发报警;最高金额的肯定从第一家或者第二家开始偷窃
         int max = 0;
         if (nums == null || nums.length == 0) return max;
@@ -47,5 +48,24 @@ public class RTest198 {
         }
         return sum;
     }
-    
+    public int rob(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        // 子问题：
+        // f(k) = 偷 [0..k) 房间中的最大金额
+
+        // f(0) = 0
+        // f(1) = nums[0]
+        // f(k) = max{ rob(k-1), nums[k-1] + rob(k-2) }
+
+        int N = nums.length;
+        int[] dp = new int[N+1];
+        dp[0] = 0;
+        dp[1] = nums[0];
+        for (int k = 2; k <= N; k++) {
+            dp[k] = Math.max(dp[k-1], nums[k-1] + dp[k-2]);
+        }
+        return dp[N];
+    }
 }

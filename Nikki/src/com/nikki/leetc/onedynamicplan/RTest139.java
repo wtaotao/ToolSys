@@ -1,7 +1,9 @@
 package com.nikki.leetc.onedynamicplan;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.nikki.out.Print;
 
@@ -14,8 +16,10 @@ public class RTest139 {
 
 	public static void main(String[] args) {
 		//s = "leetcode", wordDict = ["leet", "code"]
-	    String s = "leetcode";
-	    String[] words = {"leet", "code"};
+//	    String s = "leetcode";
+//	    String[] words = {"leet", "code"};
+	    String s = "cars";
+	    String[] words = {"car","ca","rs"};
 	    List<String> wordDict = new ArrayList<String>(words.length);
 	    for (String word: words) {
 	        wordDict.add(word);
@@ -33,7 +37,8 @@ public class RTest139 {
 	 * @param wordDict
 	 * @return
 	 */
-    public static boolean wordBreak(String s, List<String> wordDict) {
+	//上面例子出错
+    public static boolean wordBreak1(String s, List<String> wordDict) {
         //思路：正向的话需要字符串切词比较麻烦，反过来用字典的每个单词去匹配字符串，匹配上的话改成空；最后判断字符串是否成了空字符串。
         for (int i = 0; i < wordDict.size(); i++) {
             if (s.contains(wordDict.get(i))) {
@@ -41,5 +46,19 @@ public class RTest139 {
             }
         }
         return s.trim().isEmpty();
+    }
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordDictSet = new HashSet(wordDict);
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
     }
 }

@@ -28,9 +28,10 @@ public class RTest322 {
 	 * @param amount
 	 * @return
 	 */
-    public int coinChange(int[] coins, int amount) {
+	//[2]/3预期-1，结果错
+    public int coinChange1(int[] coins, int amount) {
         //思路：硬币面额从大到小排序，总额尝试减最大的面额，为正则减；为负则换更小的.可能几个和大于一个面额的拼？？？
-        if (coins == null || coins.length == 0 || amount <= 0) return -1;
+        if (coins == null || coins.length == 0 || amount <= 0) return 0;
         Arrays.sort(coins);
         int count = 0;
         for (int i = coins.length-1; i >= 0; i--) {
@@ -42,7 +43,21 @@ public class RTest322 {
             if (amount == 0) break;
         }
         //如果没找到组合，count赋值-1
-        if (amount > 0) count = -1;
+        if (amount > 0) count = 0;
         return count;
+    }
+    public int coinChange(int[] coins, int amount) {
+        int max = amount + 1;
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, max);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (coins[j] <= i) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 }
