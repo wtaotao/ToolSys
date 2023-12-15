@@ -9,7 +9,7 @@ package com.nikki.pattern.dynamicproxy.cglib;
  *
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: UserDao.java, v 0.1 2023年9月22日 下午3:59:42 wangyanjun Exp $
  */
 public interface UserDao {

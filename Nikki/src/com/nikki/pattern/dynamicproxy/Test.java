@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
  *
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: Test.java, v 0.1 2023年9月22日 下午1:29:03 wangyanjun Exp $
  */
 public class Test {

@@ -9,8 +9,8 @@ package com.nikki.temp;
  *
  * </pre>
  *
- * @author wangyanjun
- * @version $Id: Person.java, v 0.1 2023年9月21日 上午10:42:11 wangyanjun Exp $
+ * @author Jesse Wang
+ * @version $Id: Person.java, v 0.1 2023年9月21日 上午10:42:11 Jesse Wang Exp $
  */
 public class Person {
     

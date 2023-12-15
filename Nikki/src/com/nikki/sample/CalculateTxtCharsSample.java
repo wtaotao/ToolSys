@@ -15,8 +15,8 @@ import java.util.regex.Pattern;
  *
  * </pre>
  *
- * @author wangyanjun
- * @version $Id: CalculateTxtChars.java, v 0.1 2023年9月4日 下午1:05:51 wangyanjun Exp $
+ * @author Jesse Wang
+ * @version $Id: CalculateTxtChars.java, v 0.1 2023年9月4日 下午1:05:51 Jesse Wang Exp $
  */
 public class CalculateTxtCharsSample {
 

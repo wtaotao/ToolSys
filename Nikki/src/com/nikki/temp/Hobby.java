@@ -9,8 +9,8 @@ package com.nikki.temp;
  *
  * </pre>
  *
- * @author wangyanjun
- * @version $Id: Hobby.java, v 0.1 2023年9月21日 上午11:27:08 wangyanjun Exp $
+ * @author Jesse Wang
+ * @version $Id: Hobby.java, v 0.1 2023年9月21日 上午11:27:08 Jesse Wang Exp $
  */
 public class Hobby {
     private String scope;

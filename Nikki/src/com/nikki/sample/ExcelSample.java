@@ -39,8 +39,8 @@ import jxl.write.biff.RowsExceededException;
  *
  * </pre>
  *
- * @author wangyanjun
- * @version $Id: ExcelDemo.java, v 0.1 2018年1月24日 下午3:16:37 wangyanjun Exp $
+ * @author Jesse Wang
+ * @version $Id: ExcelDemo.java, v 0.1 2018年1月24日 下午3:16:37 Jesse Wang Exp $
  */
 public class ExcelSample {
 

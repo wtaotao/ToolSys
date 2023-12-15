@@ -9,7 +9,7 @@ package com.nikki.algorithm;
  * Twitter的分布式自增ID雪花算法snowflake
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @filename SnowFlake.java
  * @version v0.1 2023年11月2日
  * @time 上午9:00:08 

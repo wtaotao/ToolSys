@@ -9,7 +9,7 @@ package com.nikki.dataflowjob.process;
  *
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: DataProcessFactory.java, v 0.1 2017年7月24日 下午5:51:02 wangyanjun Exp $
  */
 public class DataProcessFactory {  

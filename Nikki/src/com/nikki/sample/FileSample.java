@@ -4,7 +4,7 @@
 package com.nikki.sample;
 
 /**
- * @author wangyanjun
+ * @author Jesse Wang
  *
  */
 public class FileSample {

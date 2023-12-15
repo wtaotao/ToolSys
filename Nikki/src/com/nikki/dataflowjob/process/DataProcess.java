@@ -14,7 +14,7 @@ import com.nikki.dataflowjob.entity.Foo;
  *
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: DataProcess.java, v 0.1 2017年7月24日 下午5:48:50 wangyanjun Exp $
  */
 public class DataProcess {  

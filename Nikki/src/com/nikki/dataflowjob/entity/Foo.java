@@ -9,7 +9,7 @@ package com.nikki.dataflowjob.entity;
  *
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: Foo.java, v 0.1 2017年7月24日 下午5:50:36 wangyanjun Exp $
  */
 public class Foo {  

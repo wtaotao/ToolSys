@@ -15,7 +15,7 @@ import net.sf.cglib.proxy.MethodProxy;
  * 代理主要类
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: CglibProxy.java, v 0.1 2023年9月22日 下午4:10:44 wangyanjun Exp $
  */
 public class CglibProxy implements MethodInterceptor {

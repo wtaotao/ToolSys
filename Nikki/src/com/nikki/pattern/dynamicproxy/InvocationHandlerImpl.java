@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
  * 每次生成动态代理类对象时,实现了InvocationHandler接口的调用处理器对象
  * </pre>
  *
- * @author wangyanjun
+ * @author Jesse Wang
  * @version $Id: InvocationHandlerImpl.java, v 0.1 2023年9月22日 下午1:07:05 wangyanjun Exp $
  */
 public class InvocationHandlerImpl implements InvocationHandler {

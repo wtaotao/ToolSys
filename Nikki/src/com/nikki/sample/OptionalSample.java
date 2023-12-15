@@ -14,8 +14,8 @@ import com.nikki.temp.Person;
  *
  * </pre>
  *
- * @author wangyanjun
- * @version $Id: OptionalSample.java, v 0.1 2023年9月21日 上午10:48:06 wangyanjun Exp $
+ * @author Jesse Wang
+ * @version $Id: OptionalSample.java, v 0.1 2023年9月21日 上午10:48:06 Jesse Wang Exp $
  */
 public class OptionalSample {
 
