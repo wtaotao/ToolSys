@@ -66,6 +66,7 @@ public class RTest188 {
         return max;
     }
     public int maxProfit(int k, int[] prices) {
+        //价格为空，最大利润0
         if (prices.length == 0) {
             return 0;
         }
@@ -77,6 +78,7 @@ public class RTest188 {
 
         buy[0] = -prices[0];
         sell[0] = 0;
+        //初始化成最小值
         for (int i = 1; i <= k; ++i) {
             buy[i] = sell[i] = Integer.MIN_VALUE / 2;
         }
