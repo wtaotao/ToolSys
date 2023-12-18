@@ -10,9 +10,10 @@ import com.nikki.out.Print;
 public class RTest123 {
 
 	public static void main(String[] args) {
-		int[] prices = {3,3,5,0,0,3,1,4};
+//		int[] prices = {3,3,5,0,0,3,1,4};
+		int[] prices = {1,2,4,2,5,7,2,4,9,0};
         RTest123 test = new RTest123();
-        Print.stringOut("The max profit is:" + test.maxProfit(prices));
+        Print.stringOut("The max profit is:" + test.maxProfit1(prices));
 	}
 	/**
 	 * 给定一个数组，它的第i个元素是一支给定的股票在第i天的价格。
@@ -27,7 +28,7 @@ public class RTest123 {
 	 */
 	//prices =[1,2,4,2,5,7,2,4,9,0],預期結果13
     public int maxProfit1(int[] prices) {
-        //算出隔天的价格差，找出两个连续最大和的子集;是否存在跨负值且和比前面逻辑更大的子集？？？
+        //算出隔天的价格差，找出两个连续最大和的子集;是否存在跨负值且和比前面逻辑更大的子集？？？--本方式实现不了
         if (prices == null || prices.length < 2) return 0;
         int max = 0;
         int[] profits = new int[prices.length-1]; 
