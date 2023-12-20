@@ -31,7 +31,7 @@ public class RTest120 {
         //第一行第一个值
         f[0] = triangle.get(0).get(0);
         for (int i = 1; i < n; ++i) {
-            //前一行的值+三角形本行每一个值
+            //前一个最小值+本节点值
             f[i] = f[i - 1] + triangle.get(i).get(i);
             //
             for (int j = i - 1; j > 0; --j) {

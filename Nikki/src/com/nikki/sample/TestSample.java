@@ -23,7 +23,19 @@ public class TestSample {
 //		(new Test()).testHashMap1();
 //		(new TestSample()).testThread1();
 //		(new TestSample()).testThread2();
+		(new TestSample()).testRuntime();
 	    
+	}
+	
+	private void testRuntime() {
+	    Runtime rt = Runtime.getRuntime();
+	    Print.stringOut("availableProcessors:" + rt.availableProcessors());
+	    Print.stringOut("totalMemory:" + rt.totalMemory());
+	    Print.stringOut("maxMemory:" + rt.maxMemory());
+	    Print.stringOut("freeMemory:" + rt.freeMemory());
+	}
+	
+	private void testOperator() {
 	    int[] array = {4,6,8,1,2,5};
 	    for(int i=0; i<array.length; ++i) {
 	        System.out.print(array[i] + "-");

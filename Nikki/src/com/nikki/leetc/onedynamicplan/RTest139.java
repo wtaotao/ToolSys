@@ -37,7 +37,7 @@ public class RTest139 {
 	 * @param wordDict
 	 * @return
 	 */
-	//上面例子出错
+	//"car","ca","rs"拼"cars"会出错
     public static boolean wordBreak1(String s, List<String> wordDict) {
         //思路：正向的话需要字符串切词比较麻烦，反过来用字典的每个单词去匹配字符串，匹配上的话改成空；最后判断字符串是否成了空字符串。
         for (int i = 0; i < wordDict.size(); i++) {
@@ -47,7 +47,7 @@ public class RTest139 {
         }
         return s.trim().isEmpty();
     }
-    public boolean wordBreak(String s, List<String> wordDict) {
+    public static boolean wordBreak(String s, List<String> wordDict) {
         Set<String> wordDictSet = new HashSet(wordDict);
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;
