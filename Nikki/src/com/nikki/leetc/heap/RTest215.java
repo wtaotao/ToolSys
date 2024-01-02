@@ -57,7 +57,7 @@ public class RTest215 {
         
         return temp[temp.length - k];
     }
-    private int quickSelect(List<Integer> nums, int k) {
+    private static int quickSelect(List<Integer> nums, int k) {
         // 随机选择基准数
         Random rand = new Random();
         int pivot = nums.get(rand.nextInt(nums.size()));
@@ -83,7 +83,7 @@ public class RTest215 {
         return pivot;
     }
     
-    public int findKthLargest(int[] nums, int k) {
+    public static int findKthLargest(int[] nums, int k) {
         List<Integer> numList = new ArrayList<>();
         for (int num : nums) {
             numList.add(num);

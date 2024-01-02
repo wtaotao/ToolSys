@@ -57,6 +57,7 @@ public class RTest295 {
             if (count == 0) {
                 nums[0] = num;
             }
+            //从最后一个开始比较，插入到第一个比插入值小的元素后面
             for (int i = count-1; i >= 0; i--) {
                 if (nums[i] <= num) {
                     nums[i+1] = num;
