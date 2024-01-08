@@ -21,7 +21,7 @@ public class RTest169 {
 
     /**
      * <pre>
-     * 给定一个大小为n的数组nums，返回其中的多数元素。多数元素是指在数组中出现次数大于⌊ n/2 ⌋的元素。
+     * 给定一个大小为n的数组nums，返回其中的多数元素。多数元素是指在数组中出现次数大于⌊n/2⌋的元素。
      * 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
      * </pre>
      *
@@ -48,15 +48,16 @@ public class RTest169 {
      * @return
      */
     private static int majorityElement(int[] nums) {
-        
+        //数组为空，则返回256
         if (nums==null) return 256;
-        
+        //创建一个下标覆盖元素范围（平移至正整数区间）的数组
         int[] count = new int[(int) (2*Math.pow(10, 9)+1)];
         for (int i=0; i<nums.length; i++) {
             int j = (int) (nums[i] + Math.pow(10, 9));
+            //遍历所有数组元素，元素正值为下标的数组值加一
             count[j]++;
         }
-        
+        //遍历计数数组，找出最大计数的元素值和下标
         int temp = 0, index = 0;
         for (int k=0; k<count.length; k++) {
             if (temp < count[k]) {
@@ -64,7 +65,7 @@ public class RTest169 {
                 index = k;
             }
         }
-        
+        //计数个数大于数组个数一半，则返回本元素
         if (temp > nums.length/2) {
             return (int) (index-Math.pow(10, 9));
         } else

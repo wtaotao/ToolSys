@@ -43,15 +43,18 @@ public class RTest26 {
     }
 
     public static int removeDuplicates(int[] nums) {
+        //数组长度为1，直接返回
         if (nums.length==1) return 1;
         int temp=nums[0], i=1, count=0;
         for (; i<=nums.length-count-1;) {
+            //与前面的元素相等，后面的数组元素全部前移
             if (nums[i]==temp) {
                 for (int j=i; j<nums.length-count-1; j++) {
                     nums[j] = nums[j+1];
                 }
                 count++;
             } else {
+                //否则取后一个元素为比较元素
                 temp = nums[i];
                 i++;
             }

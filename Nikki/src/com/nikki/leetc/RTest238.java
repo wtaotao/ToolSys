@@ -56,16 +56,20 @@ public class RTest238 {
 //        }
 //        return answer;
 //    }
-    //需要结合题解
+    //参考
     public static int[] productExceptSelf(int[] nums) {
         int len = nums.length;
+        //空数组则返回0
         if (len == 0) return new int[0];
+        //创建答案数组
         int[] ans = new int[len];
         ans[0] = 1;
         int tmp = 1;
+        //先求左部分的乘积
         for (int i = 1; i < len; i++) {
             ans[i] = ans[i - 1] * nums[i - 1];
         }
+        //求右部分乘积的同时，把最后结果一起求出来
         for (int i = len - 2; i >= 0; i--) {
             tmp *= nums[i + 1];
             ans[i] *= tmp;

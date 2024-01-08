@@ -50,7 +50,6 @@ public class RTest13 {
      * I可以放在V(5)和X(10)的左边，来表示4和9。
      * X可以放在L(50)和C(100)的左边，来表示40和90。
      * C可以放在D(500)和M(1000)的左边，来表示400和900。
-     * 
      * </pre>
      *
      * @param s
@@ -65,6 +64,7 @@ public class RTest13 {
                 if (subStr.equalsIgnoreCase("IV") || subStr.equalsIgnoreCase("IX") || subStr.equalsIgnoreCase("XL") || 
                         subStr.equalsIgnoreCase("XC") || subStr.equalsIgnoreCase("CD") || subStr.equalsIgnoreCase("CM")) {
                     number = number + transSpecial(subStr);
+                    //指针多向后移动一位
                     i++;
                     continue;
                 }

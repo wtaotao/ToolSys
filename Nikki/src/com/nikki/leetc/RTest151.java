@@ -52,18 +52,21 @@ public class RTest151 {
         int start = s.length() - 1;
         int end = s.length()-1;
         while (start >= 0 && end >= 0) {
+            //从字符串末尾逆向搜索至第一个非空字符
             while (end >= 0 && s.charAt(end) == ' ') {
                 end--;
             };
             
             start = end;
+            //start指针逆向搜索至第一个空字符
             while (start >= 0 && s.charAt(start) != ' ') {
                 start--;
             };
-            
+            //搜索未结束且不是第一个word，则插入一个空格
             if (reverseStrBf.length() != 0 && start!= end) reverseStrBf.append(" ");
+            //插入搜索到的单词
             reverseStrBf.append(s.substring(start+1, end+1));
-            
+            //尾指针设置到开始指针处，继续下一个word的查找
             end = start;
         }
         

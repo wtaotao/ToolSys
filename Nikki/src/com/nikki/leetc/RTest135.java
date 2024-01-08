@@ -48,19 +48,23 @@ public class RTest135 {
     public static int candy(int[] ratings) {
         int sum = 0;
         int[] candy = new int[ratings.length];
+        //首先给每个孩子各分配一个糖果
         for (int i=0; i<candy.length; i++) {
             candy[i] = 1;
         }
+        //从左至右，两两比较，评分更高的孩子获得更多糖果
         for (int i=0; i<ratings.length-1; i++) {
             if (ratings[i] < ratings[i+1] && candy[i] >= candy[i+1]) {
                 candy[i+1] = candy[i] + 1;
             }
         }
+        //从右至左，两两比较，评分更多的孩子获得等多糖果
         for (int i=ratings.length-1; i>=1; i--) {
             if (ratings[i] < ratings[i-1] && candy[i] >= candy[i-1]) {
                 candy[i-1] = candy[i] + 1;
             }
         }
+        //计算糖果的总数
         for (int i=0; i<candy.length; i++) {
             sum += candy[i];
         }

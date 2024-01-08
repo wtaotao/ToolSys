@@ -21,8 +21,8 @@ public class RTest27 {
 
     /**
      * <pre>
-     * 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
-     * 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
+     * 给你一个数组nums和一个值val，你需要原地移除所有数值等于val的元素，并返回移除后数组的新长度。
+     * 不要使用额外的数组空间，你必须仅使用O(1)额外空间并原地修改输入数组。
      * 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
      * </pre>
      *
@@ -45,6 +45,7 @@ public class RTest27 {
 
         int movedSum = 0;
         for (int i=0; i<=nums.length-movedSum-1; ) {
+            //与val比较，相等则后面所有的元素前移，同时移除元素总数加一
             if (nums[i] == val) {
                 for (int j=i; j<nums.length-movedSum-1; j++) {
                     nums[j] = nums[j+1];

@@ -49,21 +49,26 @@ public class RTest14 {
     public static String longestCommonPrefix(String[] strs) {
         int index = 0;
         String prefix = "";
+        //第一个字符串为空串
         if (strs[0].length() < 1) return "";
         do {
             char c = strs[0].charAt(index);
             int i=1;
             for (; i<strs.length; i++) {
+                //指针超出某字符串长度，或者未超出但字符不匹配时中断比较跳出
                 if ((index >= strs[i].length()) || (index < strs[i].length()) && (strs[i].charAt(index) != c) ) {
                     break;
                 }
             }
+            //本字符在所有字符串中均匹配
             if (i == strs.length) {
                 index++;
             } else {
+                //有字符不匹配则终止搜索
                 break;
             }
         } while (index < strs[0].length());
+        //如果匹配下标大于0，则有index个字符公用前缀
         if (index > 0) prefix = strs[0].substring(0, index);
         return prefix;
     }

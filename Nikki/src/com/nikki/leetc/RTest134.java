@@ -10,7 +10,6 @@ import com.nikki.out.Print;
  * <pre>
  * 加油站
  * </pre>
- *
  * @author Jesse Wang
  * @filename RTest134.java
  * @version v0.1 2023年11月8日
@@ -61,6 +60,7 @@ public class RTest134 {
 //        if (gassum < costsum) start = -1;
 //        return start;
 //    }
+    //找出剩余油最少的加油站，如果总油大于总消耗，则为此站？错！
     public static int canCompleteCircuit1(int[] gas, int[] cost) {
         int len = gas.length;
         int spare = 0;
