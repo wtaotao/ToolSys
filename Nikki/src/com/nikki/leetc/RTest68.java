@@ -15,19 +15,20 @@ public class RTest68 {
 
 	}
 	/**
-	 * 给定一个单词数组 words 和一个长度 maxWidth ，重新排版单词，使其成为每行恰好有 maxWidth 个字符，且左右两端对齐的文本。
-	 * 你应该使用 “贪心算法” 来放置给定的单词；也就是说，尽可能多地往每行中放置单词。必要时可用空格 ' ' 填充，使得每行恰好有 maxWidth 个字符。
+	 * 给定一个单词数组words和一个长度maxWidth，重新排版单词，使其成为每行恰好有maxWidth个字符，且左右两端对齐的文本。
+	 * 你应该使用“贪心算法”来放置给定的单词；也就是说，尽可能多地往每行中放置单词。必要时可用空格' '填充，使得每行恰好有maxWidth个字符。
 	 * 要求尽可能均匀分配单词间的空格数量。如果某一行单词间的空格不能均匀分配，则左侧放置的空格数要多于右侧的空格数。
 	 * 文本的最后一行应为左对齐，且单词之间不插入额外的空格。
 	 * 注意:
 	 * 单词是指由非空格字符组成的字符序列。
-	 * 每个单词的长度大于 0，小于等于 maxWidth。
-	 * 输入单词数组 words 至少包含一个单词。
+	 * 每个单词的长度大于0，小于等于maxWidth。
+	 * 输入单词数组words至少包含一个单词。
 	 * @param words
 	 * @param maxWidth
 	 * @return
 	 */
     public List<String> fullJustify(String[] words, int maxWidth) {
+        //初始化结果列表
         List<String> res = new ArrayList<>();
         int cnt = 0, bg = 0;
         for (int i = 0; i < words.length; i++) {
@@ -46,8 +47,9 @@ public class RTest68 {
      * 对每行单词进行空格平均划分
      */
     private String fillWords(String[] words, int bg, int ed, int maxWidth, boolean lastLine) {
+        //单词个数
         int wordCount = ed - bg + 1;
-        // 除去每个单词尾部空格， + 1 是最后一个单词的尾部空格的特殊处理
+        // 除去每个单词尾部空格， +1是最后一个单词的尾部空格的特殊处理
         int spaceCount = maxWidth + 1 - wordCount;
         for (int i = bg; i <= ed; i++) {
             // 除去所有单词的长度

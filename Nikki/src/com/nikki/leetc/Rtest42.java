@@ -31,8 +31,10 @@ public class Rtest42 {
         int[] height = {4,2,0,3,2,5};
         Print.stringOut("The sum is:" + trap(height));
     }
+    //
     public static int trap1(int[] height) {
         int max = 0, sum = 0;
+        //找出最高的柱子
         for (int i=0; i<height.length; i++) {
             if(max < height[i]) max = height[i];
         }
@@ -47,18 +49,21 @@ public class Rtest42 {
     
     private static int count(int[] a) {
         int start = 0, end = 0, sum = 0;
+        //找第一个大于零的设为起始位
         for(int i=0; i<a.length; i++) {
             if (a[i] >= 0) {
                 start = i;
                 break;
             }
         }
+        //逆向找第一个大于零的设为结束位
         for(int i=a.length-1; i>=0; i--) {
             if (a[i] >= 0) {
                 end = i;
                 break;
             }
         }
+        //若存在起始小于结束的正常区间
         if(start < end) {
             for(int i=start+1; i<end; i++) {
                 if(a[i] < 0) {
@@ -71,8 +76,8 @@ public class Rtest42 {
     
     public static int trap(int[] height) {
         int sum = 0;
-        //最两端的列不用考虑，因为一定不会有水。所以下标从 1 到 length - 2
-        for (int i = 1; i < height.length - 1; i++) {
+        //最两端的列不用考虑，因为一定不会有水。所以下标从 1 到 length-2
+        for (int i = 1; i < height.length-1; i++) {
             int max_left = 0;
             //找出左边最高
             for (int j = i - 1; j >= 0; j--) {

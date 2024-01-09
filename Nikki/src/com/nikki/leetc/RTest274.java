@@ -48,6 +48,7 @@ public class RTest274 {
     	Arrays.sort(citations);
         int h = 0;
         for(int i=citations.length-1; i>=0; i--) {
+            //被引用次数从高到低，如果大于h，则h加一
             if (citations[i] >= h+1) {
                 h++;
             } else {
@@ -56,7 +57,7 @@ public class RTest274 {
         }
         return h;
     }
-    
+    //冒泡排序
     public static int[] sort(int[] array) {
         // 一定要记住判断边界条件
         if (array == null || array.length < 2) {

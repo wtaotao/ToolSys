@@ -52,6 +52,7 @@ public class RTest27 {
                 }
                 movedSum++;
             } else {
+                //不等则比较下一个
                 i++;
             }
         }
