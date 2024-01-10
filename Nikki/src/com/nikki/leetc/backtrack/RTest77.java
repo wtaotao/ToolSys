@@ -58,6 +58,7 @@ public class RTest77 {
 	 * @return
 	 */
     public static List<List<Integer>> combine(int n, int k) {
+        //创建结果列表
         List<List<Integer>> combinations = new ArrayList<List<Integer>>();
         //数的个数大于可选数数量，或者选数个数为0，返回空
         if (n < k || k <= 0) {
@@ -67,7 +68,18 @@ public class RTest77 {
         backtrack(n, k, 0, combinations, new ArrayList<Integer>());
         return combinations;
     }
-    
+    /**
+     * 
+     * <pre>
+     *
+     * </pre>
+     *
+     * @param n 可选整数个数
+     * @param k 选择数量
+     * @param index 当前下标
+     * @param combinations 结果列表
+     * @param list 当前结果
+     */
     private static void backtrack(int n, int k, int index, List<List<Integer>> combinations, List<Integer> list) {
         //组合字符串完成
         if (k == index) {

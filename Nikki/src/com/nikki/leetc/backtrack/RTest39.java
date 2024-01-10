@@ -15,7 +15,6 @@ public class RTest39 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 	/**
 	 * 你一个无重复元素的整数数组candidates和一个目标整数target，找出candidates中可以使数字和为目标数target的所有不同组合，
@@ -33,32 +32,51 @@ public class RTest39 {
 	 * @return
 	 */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        //思路： 
+        //创建结果列表
         int len = candidates.length;
         List<List<Integer>> res = new ArrayList<>();
+        //备选数列表为空则返回空结果列表
         if (len == 0) {
             return res;
         }
-        // 排序是剪枝的前提
+        //排序是剪枝的前提
         Arrays.sort(candidates);
+        //创建缓存队列
         Deque<Integer> path = new ArrayDeque<>();
         dfs(candidates, 0, len, target, path, res);
         return res;
     }
-
+    /**
+     * 
+     * <pre>
+     *
+     * </pre>
+     *
+     * @param candidates 可选数集合
+     * @param begin 开始下标
+     * @param len 长度
+     * @param target 目标值
+     * @param path 路径队列
+     * @param res 结果列表
+     */
     private void dfs(int[] candidates, int begin, int len, int target, Deque<Integer> path, List<List<Integer>> res) {
-        // 由于进入更深层的时候，小于 0 的部分被剪枝，因此递归终止条件值只判断等于 0 的情况
+        //由于进入更深层的时候，小于0的部分被剪枝，因此递归终止条件值只判断等于0的情况
         if (target == 0) {
+            //若正好等于目标值，则插入本路径进结果集
             res.add(new ArrayList<>(path));
             return;
         }
+        //从起点开始遍历整个候选数组
         for (int i = begin; i < len; i++) {
-            // 重点理解这里剪枝，前提是候选数组已经有序，
+            //重点理解这里剪枝，前提是候选数组已经有序，
             if (target - candidates[i] < 0) {
                 break;
             }
+            //如果不大于剩余目标值，加入候选值
             path.addLast(candidates[i]);
+            //递归在减去已选候选值的情况下进行新一轮尝试
             dfs(candidates, i, len, target - candidates[i], path, res);
+            //删除候选值，进行其它尝试
             path.removeLast();
         }
     }

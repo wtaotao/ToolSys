@@ -47,27 +47,34 @@ public class RTest88 {
         Print.arrayOut(nums1);
         Print.stringOut("The second array is:");
         Print.arrayOut(nums2);
-        
+        //创建一个结果数组，长度为输入数组长度和
         int[] temp = new int[m+n];
         int i = m-1,j = n-1;
+        //从最大值开始取并插入和数组
         for (int k=m+n-1; i >= 0 && j >= 0; k--) {
+            //nums2的元素值较大，取出放入和数组
             if (nums1[i] <= nums2[j]) {
                 temp[k] = nums2[j];
                 j--;
             } else {
+                //否则取nums1的值放入和数组
                 temp[k] = nums1[i];
                 i--;
             }
         }
+        //nums1还存在元素，把合并排好序的元素挨个插入nums1后面
         if (i>=0) {
             for (int l = i+1; l <= m+n-1; l++) {
                 nums1[l] = temp[l];
             }
         }
+        //nums2还存在元素，则把nums2的剩余元素和合并排好序的和数组元素插入nums1
         if (j>=0) {
+            //插入nums2剩余的元素至nums1
             for (int l = 0; l <= j; l++) {
                 nums1[l] = nums2[l];
             }
+            //插入排好序的和数组的元素
             for (int l = j+1; l <= m+n-1; l++) {
                 nums1[l] = temp[l];
             }
@@ -97,7 +104,9 @@ public class RTest88 {
         Print.arrayOut(nums2);
         
         int i = m-1,j = n-1;
+        //从两输入数组的最后元素开始比较合并
         for (int k=m+n-1; i >= 0 && j >= 0; k--) {
+            //取相较更大的元素插入nums1最后，被取的数组指针前移
             if (nums1[i] <= nums2[j]) {
                 nums1[k] = nums2[j];
                 j--;
@@ -106,6 +115,7 @@ public class RTest88 {
                 i--;
             }
         }
+        //nums2还有未取的元素，则挨个插入nums1
         if (j>=0) {
             for (int l = 0; l <= j; l++) {
                 nums1[l] = nums2[l];

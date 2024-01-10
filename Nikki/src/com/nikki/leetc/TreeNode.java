@@ -32,31 +32,38 @@ public class TreeNode {
            this.right = right;
            }
     public static TreeNode constructTree (Integer[] root) {
+        //根节点为空或者长度为0，直接返回null
         if (root == null || root.length == 0) {
             return null;
         }
+        //创建队列，创建根节点放入队列
         Queue<TreeNode> queue = new ArrayDeque<>();
         TreeNode rnode = new TreeNode(root[0]);
         queue.add(rnode);
         
         int n = root.length, i = 1;
+        //循环遍历队列，直至为空
         while (!queue.isEmpty()) {
+            //取出头结点
             TreeNode node = queue.poll();
+            //是否已创建左右节点
             boolean hasLeft = false, hasRight = false;
             for (; i < n; ) {
                 //创建新节点
                 Integer val = root[i];
                 TreeNode newNode = null;
+                //新节点入队列
                 if (val != null) {
                     newNode = new TreeNode(val);
                     queue.add(newNode);
                 }
-                //设置为父节点的子节点
+                //设置为父节点的左节点
                 if (!hasLeft) {
                     node.left = newNode;
                     hasLeft = true;
                     i++;
                 } else if (!hasRight) {
+                    //否则设置成右节点
                     node.right = newNode;
                     hasRight = true;
                     i++;
