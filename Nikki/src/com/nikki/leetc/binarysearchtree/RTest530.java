@@ -37,7 +37,7 @@ public class RTest530 {
         if (pre == -1) {
             pre = root.val;
         } else {
-            //
+            //临近节点的差？不是任意节点的差？
             ans = Math.min(ans, root.val - pre);
             pre = root.val;
         }

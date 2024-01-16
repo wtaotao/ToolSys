@@ -31,13 +31,17 @@ public class RTest100 {
 	 * @return
 	 */
     public boolean isSameTree(TreeNode p, TreeNode q) {
+        //若有一个比较节点为空
          if (p == null || q ==null) {
+             //二者均为null则相同
              if (p == null && q == null) {
                  return true;
              } else {
+                 //否则不同
                  return false;
              }
          }
+         //节点值相等，则比较左子树和右子树
          if (p.val == q.val) {
              return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
          } else {

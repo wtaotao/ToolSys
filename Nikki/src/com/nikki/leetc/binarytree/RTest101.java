@@ -21,13 +21,14 @@ public class RTest101 {
 		Print.stringOut("Is symmetric?" + test.isSymmetric1(tree));
 	}
 	/**
-	 * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
+	 * 给你一个二叉树的根节点root，检查它是否轴对称。
 	 * 输入：root = [1,2,2,3,4,4,3]
 	 * 输出：true
 	 * @param root
 	 * @return
 	 */
     public boolean isSymmetric(TreeNode root) {
+        //根节点为空返回true
 		if(root==null) {
 			return true;
 		}

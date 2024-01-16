@@ -1,8 +1,5 @@
 package com.nikki.leetc.binarytree;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 import com.nikki.leetc.TreeNode;
 import com.nikki.out.Print;
 
@@ -17,7 +14,7 @@ public class RTest112 {
 	    RTest112 test = new RTest112();
 	    Integer[] root = {5,4,8,11,null,13,4,7,2,null,null,null,1};
 	    TreeNode tree = TreeNode.constructTree(root);
-        Print.stringOut("The result is:" + test.hasPathSum(tree, 22));
+        Print.stringOut("The result is:" + test.hasPathSum1(tree, 22));
 	}
 	/**
 	 *  给你二叉树的根节点root和一个表示目标和的整数targetSum。判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和
@@ -34,17 +31,21 @@ public class RTest112 {
         boolean hasPath = false;
         if (root != null) {
             hasPath = hasPathSum1(root.left, targetSum-root.val) || hasPathSum1(root.right, targetSum-root.val);
+        } else {
+            //节点为空且目标值为0，则返回true
+            if (targetSum == 0) hasPath = true; 
         }
         return hasPath;
     }
     public boolean hasPathSum(TreeNode root, int sum) {
+        //root为空则返回false
         if(root == null){
             return false;
         }
+        //左右节点均为空，节点值等于目标值，返回true
         if(root.left == null && root.right == null){
             return root.val == sum;
         }
         return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
-        
     }
 }

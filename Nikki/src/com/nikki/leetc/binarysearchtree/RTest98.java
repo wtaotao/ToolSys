@@ -18,12 +18,15 @@ public class RTest98 {
     }
 
     public boolean isValidBST(TreeNode node, long lower, long upper) {
+        //节点为空，返回true
         if (node == null) {
             return true;
         }
+        //小于等于低值，大于等于高值
         if (node.val <= lower || node.val >= upper) {
             return false;
         }
+        //左子树和右子树都是BST
         return isValidBST(node.left, lower, node.val) && isValidBST(node.right, node.val, upper);
     }
 }
