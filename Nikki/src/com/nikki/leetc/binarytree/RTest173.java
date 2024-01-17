@@ -32,8 +32,8 @@ public class RTest173 {
 	    private int idx;
 	    private List<Integer> arr;
         /**
-         * BSTIterator(TreeNode root) 初始化
-         * BSTIterator 类的一个对象。BST 的根节点 root 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 
+         * BSTIterator(TreeNode root)初始化
+         * BSTIterator类的一个对象。BST的根节点root会作为构造函数的一部分给出。指针应初始化为一个不存在于BST中的数字，且该数字小于BST 
          * 中的任何元素
          * 
          * @param root

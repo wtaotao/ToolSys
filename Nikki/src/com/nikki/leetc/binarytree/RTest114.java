@@ -38,6 +38,14 @@ public class RTest114 {
             }
         }
     }
+    /**
+     * 
+     * <pre>
+     * 展开后的单链表应该与二叉树先序遍历顺序相同
+     * </pre>
+     *
+     * @param root
+     */
     public static void flatten(TreeNode root) {
         while (root != null) { 
             //左子树为 null，直接考虑下一个节点
