@@ -11,38 +11,38 @@ public class RTest211 {
 
 	}
 	/**
-	 * 请你设计一个数据结构，支持 添加新单词 和 查找字符串是否与任何先前添加的字符串匹配 。
-	 * 实现词典类 WordDictionary ：
+	 * 请你设计一个数据结构，支持添加新单词和查找字符串是否与任何先前添加的字符串匹配 。
+	 * 实现词典类 WordDictionary：
 	 * 输入：
      * ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
      * [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
      * 输出：
      * [null,null,null,null,false,true,true,true]
      * 1 <= word.length <= 25
-     * addWord 中的 word 由小写英文字母组成
-     * search 中的 word 由 '.' 或小写英文字母组成
-     * 最多调用 104 次 addWord 和 search
+     * addWord中的word由小写英文字母组成
+     * search中的word由'.'或小写英文字母组成
+     * 最多调用10^4次addWord和search
 	 * @author Jesse
 	 *
 	 */
 	class WordDictionary {
 	    private Trie root;
         /**
-         * WordDictionary() 初始化词典对象
+         * WordDictionary()初始化词典对象
          */
 	    public WordDictionary() {
 	        root = new Trie();
 	    }
 	    /**
-	     * void addWord(word) 将 word 添加到数据结构中，之后可以对它进行匹配
+	     * void addWord(word)将word添加到数据结构中，之后可以对它进行匹配
 	     * @param word
 	     */
 	    public void addWord(String word) {
 	        root.insert(word);
 	    }
 	    /**
-	     * bool search(word) 如果数据结构中存在字符串与 word 匹配，则返回 true ；否则，返回  false 。word 中可能包含一些 '.' ，
-	     * 每个 . 都可以表示任何一个字母。
+	     * bool search(word)如果数据结构中存在字符串与word匹配，则返回true；否则，返回false。word中可能包含一些'.' ，
+	     * 每个.都可以表示任何一个字母。
 	     * @param word
 	     * @return
 	     */

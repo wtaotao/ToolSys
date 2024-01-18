@@ -56,7 +56,7 @@ public class RTest199 {
                 if (!rightmostValueAtDepth.containsKey(depth)) {
                     rightmostValueAtDepth.put(depth, node.val);
                 }
-                //先左节点再右节点压入堆栈
+                //先左节点再右节点压入堆栈，最先弹出来的会是最右节点
                 nodeStack.push(node.left);
                 nodeStack.push(node.right);
                 depthStack.push(depth + 1);

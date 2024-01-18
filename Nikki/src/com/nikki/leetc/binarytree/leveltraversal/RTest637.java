@@ -49,13 +49,25 @@ public class RTest637 {
 	        }
 	        return averages;
 	    }
-
+        /**
+         * 
+         * <pre>
+         *
+         * </pre>
+         *
+         * @param root 根节点
+         * @param level 层
+         * @param counts 个数
+         * @param sums 和
+         */
 	    public void dfs(TreeNode root, int level, List<Integer> counts, List<Double> sums) {
 	        if (root == null) {
 	            return;
 	        }
 	        if (level < sums.size()) {
+	            //逐个累加某层节点值计算和
 	            sums.set(level, sums.get(level) + root.val);
+	            //逐个累加计算某层节点个数
 	            counts.set(level, counts.get(level) + 1);
 	        } else {
 	            //根节点，计算总和，个数增一

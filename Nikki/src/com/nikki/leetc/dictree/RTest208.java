@@ -12,16 +12,16 @@ public class RTest208 {
 	}
 	/**
 	 * Trie（发音类似 "try"）或者说前缀树是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
-	 * 请你实现 Trie 类：
+	 * 请你实现Trie类：
 	 * 1 <= word.length, prefix.length <= 2000
 	 * word和prefix仅由小写英文字母组成
-	 * insert、search和startsWith调用次数总计不超过3 * 104次
+	 * insert、search和startsWith调用次数总计不超过3*10^4次
 	 * @author Jesse
 	 *
 	 */
 	class Trie {
         /**
-         * Trie() 初始化前缀树对象。
+         * Trie()初始化前缀树对象。
          * 输入
          * ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
          * [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]

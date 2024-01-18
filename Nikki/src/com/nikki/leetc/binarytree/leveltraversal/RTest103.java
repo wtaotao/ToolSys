@@ -34,6 +34,7 @@ public class RTest103 {
 	 * @return
 	 */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        //创建结果队列存放遍历节点
         List<List<Integer>> ans = new LinkedList<List<Integer>>();
         if (root == null) {
             return ans;
@@ -48,10 +49,12 @@ public class RTest103 {
         while (!nodeQueue.isEmpty()) {
             //每层创建一个列表保存
             Deque<Integer> levelList = new LinkedList<Integer>();
+            //记录遍历层的节点个数
             int size = nodeQueue.size();
             for (int i = 0; i < size; ++i) {
                 //取出队首元素
                 TreeNode curNode = nodeQueue.poll();
+                //在输出的每层次的队列中进行节点排序
                 if (isOrderLeft) {
                     levelList.offerLast(curNode.val);
                 } else {
