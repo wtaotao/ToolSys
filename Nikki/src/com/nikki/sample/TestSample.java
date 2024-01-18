@@ -27,6 +27,11 @@ public class TestSample {
 	    
 	}
 	
+	private void testDataType() {
+		float f = 3.4f;
+		
+	}
+	
 	private void testRuntime() {
 	    Runtime rt = Runtime.getRuntime();
 	    Print.stringOut("availableProcessors:" + rt.availableProcessors());
